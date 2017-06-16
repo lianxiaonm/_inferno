@@ -1,0 +1,51 @@
+@import (reference) "mixins.less";
+//require layout.less
+.picker {
+    .px2rem(height, 350);
+    position: relative; background: #EFEFEF; overflow: hidden; -webkit-user-select: none; user-select: none;
+    .picker-inner {
+        position: relative; width: 100%; height: 100%; overflow: hidden;
+        -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, #FFF 20%, #FFF 80%, transparent 95%, transparent);
+    }
+    &, * { box-sizing: border-box; -webkit-box-sizing: border-box; }
+    .picker-list, .picker-rule {
+        .px2rem(height, 90); .px2rem(line-height, 90); .px2rem(margin-top, -45);
+        position: absolute; width: 100%; left: 0; top: 50%;
+    }
+    .picker-rule { z-index: 2; border-top: solid 1px rgba(0, 0, 0, 0.1); border-bottom: solid 1px rgba(0, 0, 0, 0.1); }
+    .picker-list {
+        z-index: 1; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-transform: perspective(1000px) rotateY(0) rotateX(0); transform: perspective(1000px) rotateY(0) rotateX(0);
+        li {
+            width: 100%; height: 100%; color: #999;
+            position: absolute; text-align: center; vertical-align: middle;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            .px2rem(font-size, 32); .px2auto-multi(padding, 0, 18);
+            white-space: nowrap; text-overflow: ellipsis; overflow: hidden; cursor: default; visibility: hidden;
+            &.visible { visibility: visible; }
+            &.highlight { visibility: visible; color: #333; }
+        }
+    }
+}
+.picker-title { display: flex; display: -webkit-flex;
+    h5 {
+        .px2rem(height, 60); .px2rem(line-height, 60); .px2rem(font-size, 24);
+        flex: 1; -webkit-flex: 1; text-align: center; font-weight: 400; color: #999;
+    }
+}
+.picker-body { display: flex; display: -webkit-flex;
+    .picker { flex: 1; -webkit-flex: 1; }
+}
+.model-container {
+    .pop-picker {
+        .pop-picker-header {
+            .px2rem(height, 80); position: relative; font-size: 1.1em;
+            .btn {
+                .px2rem(height, 80); .px2rem(line-height, 80); .px2auto-multi(padding, 0, 30);
+                background: transparent; letter-spacing: 1px;
+                &.btn-default { color: #666 }
+                &:last-of-type { float: right }
+            }
+        }
+        .picker { .px2rem(height, 400); }
+    }
+}

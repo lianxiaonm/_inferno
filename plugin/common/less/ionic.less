@@ -1,0 +1,167 @@
+@import (reference) "mixins.less";
+//
+[class*='-container'] {
+    visibility: hidden; opacity: 0; position: fixed;
+    &.active {
+        visibility: visible; opacity: 1;
+    }
+}
+
+.block-container, .backdrop-container {
+    left: 0; top: 0; right: 0; bottom: 0; z-index: 9990; background-color: rgba(0, 0, 0, .3); -webkit-transition: all .3s; transition: all .3s;
+}
+
+.block-container { background-color: rgba(0, 0, 0, 0); }
+
+.drop-open { overflow: hidden; }
+
+/*model*/
+.model-container {
+    left: 0; top: 0; right: 0; bottom: 0; z-index: 9992;
+    -webkit-transform: translate3d(0, 100%, 0) translateZ(0);
+    transform: translate3d(0, 100%, 0) translateZ(0);
+    transition: all .5s cubic-bezier(.42, -.05, .29, .91);
+    -webkit-transition: all .5s cubic-bezier(.42, -.05, .29, .91);
+    > * { position: absolute; left: 0; right: 0; background: #FFF; bottom: 0; }
+    &.lf {
+        -webkit-transform: translate3d(-100%, 0, 0) translateZ(0); transform: translate3d(-100%, 0%, 0) translateZ(0);
+        > * { left: 0; right: auto !important; }
+    }
+    &.lr {
+        -webkit-transform: translate3d(100%, 0, 0) translateZ(0); transform: translate3d(100%, 0%, 0) translateZ(0);
+        > * { right: 0; left: auto !important; }
+    }
+    &.tp { -webkit-transform: translate3d(0, -100%, 0) translateZ(0); transform: translate3d(0, -100%, 0) translateZ(0);
+        > * { top: 0; bottom: auto !important; }
+    }
+    &.active { -webkit-transform: translate3d(0, 0, 0) translateZ(0); transform: translate3d(0, 0, 0) translateZ(0); }
+}
+
+/*
+*actionsheet
+*/
+.model-container {
+    .action-sheet { background: transparent;
+        .item-view {
+            text-align: center;
+            .px2auto-multi(margin, 24, 36);
+            &:before, &:after { content: none }
+            .item-list {
+                background: #FFF; letter-spacing: .1rem; color: #3D98CC;
+                &:active { opacity: .8 }
+                &:first-of-type { .px2auto-multi(border-radius, 10, 10, 0, 0); }
+                &:last-of-type { .px2auto-multi(border-radius, 0, 0, 10, 10);
+                    &:before { content: none }
+                }
+                &:first-of-type:last-of-type { .px2rem(border-radius, 10); }
+                &:after { left: 0 }
+                &.cancel { color: #FF8568 }
+            }
+        }
+    }
+}
+
+/*
+ *spinner
+ */
+
+[class*='spinner-'] { fill: #666; stroke: #666; }
+
+.spinner svg {
+    .px2rem(width, 75); .px2rem(height, 75);
+}
+
+/*loading*/
+.loading-container {
+    .px2rem(font-size, 28); .px2rem(padding, 30); .px2rem(border-radius, 10);
+    z-index: 9994; background-color: rgba(0, 0, 0, 0.7); text-align: center; color: #FFF;
+    -webkit-transition: all .3s; transition: all .3s; text-overflow: ellipsis;
+    [class*='spinner-'] { fill: #FFF; stroke: #FFF; }
+    .toast {
+        > .icon-font { font-size: .41rem; .px2rem(margin-right, 12); }
+    }
+}
+
+.loading-container, .popup-container {
+    left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+}
+
+/*
+ *popup css
+ */
+.popup-container {
+    left: 50%; top: 50%; z-index: 9993; -webkit-transition: top .3s ease-out; transition: top .3s ease-out;
+    &.top { top: 30%; z-index: 9991 }
+    &.bottom { top: 70%; z-index: 9991 }
+    &.active .popup {
+        animation: scaleIn .2s ease-in-out both;
+        -webkit-animation: scaleIn .2s ease-in-out both;
+    }
+    &.popup-hide .popup {
+        animation: scaleOut .15s ease-in-out both;
+        -webkit-animation: scaleOut .15s ease-in-out both;
+    }
+    .popup {
+        .px2rem(border-radius, 8); .px2rem(width, 550); .px2rem(font-size, 34);
+        -webkit-box-shadow: 0 0 2px #333; box-shadow: 0 0 2px #333;
+        text-align: center; background-color: rgba(255, 255, 255, 1);
+        .popup-head {
+            .px2auto-multi(padding, 30, 20, 15);
+            .popup-title { .px2rem(font-size, 30); font-weight: normal }
+            .popup-sub-title {
+                .px2rem(margin-top, 10); .px2rem(font-size, 20); font-weight: normal;
+            }
+            //.border-handle(0010, #D8D8D8, solid);
+        }
+        .popup-body {
+            .px2auto-multi(padding, 36, 24); font-size: .9em; overflow-y: auto; overflow-x: hidden;
+        }
+        .popup-btns {
+            display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-direction: normal; -webkit-box-orient: horizontal; -webkit-flex-direction: row; flex-direction: row;
+            &:before { width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); }
+            &:before, .btn:after { background: #D8D8D8; content: ''; position: absolute; }
+            .btn {
+                .px2auto-multi(padding, 20, 0);
+                -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; display: block; background: inherit;
+                &:after { right: 0; top: 0; height: 100%; width: 1px; -webkit-transform: scaleX(.5); transform: scaleX(.5); }
+                &:last-of-type:after { content: none; }
+            }
+        }
+    }
+}
+
+//定制的popUp
+.popup-body .made-body {
+    .px2auto-multi(margin, -30, -24, -28); color: #333;
+    .made-title {
+        .px2rem(font-size, 32); .px2rem(padding, 20); position: relative;
+        em { position: absolute; .px2rem(line-height, 44);.px2rem(left, 20); color: #999; .px2rem(font-size, 54) }
+    }
+}
+
+.btn {
+    .px2auto-multi(padding, 0, 30);
+    background-color: #F8F8F8; color: #444; position: relative; display: inline-block; border: none; text-align: center; text-overflow: ellipsis;
+    &.btn-positive { color: #3D98CC; }
+    &.btn-default { color: #333 }
+}
+
+@-webkit-keyframes scaleIn {
+    from { -webkit-transform: scale(1.2); opacity: 0; }
+    to { -webkit-transform: scale(1); opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(1.2); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@-webkit-keyframes scaleOut {
+    from { -webkit-transform: scale(1); opacity: 1; }
+    to { -webkit-transform: scale(.8); opacity: 0; }
+}
+
+@keyframes scaleOut {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(.8); opacity: 0; }
+}

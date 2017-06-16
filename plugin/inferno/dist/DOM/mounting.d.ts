@@ -1,0 +1,11 @@
+import { LifecycleClass } from 'inferno-shared';
+import { VNode } from '../core/VNodes';
+export declare function mount(vNode: VNode, parentDom: Element, lifecycle: LifecycleClass, context: Object, isSVG: boolean): any;
+export declare function mountText(vNode: VNode, parentDom: Element): any;
+export declare function mountVoid(vNode: VNode, parentDom: Element): Text;
+export declare function mountElement(vNode: VNode, parentDom: Element, lifecycle: LifecycleClass, context: Object, isSVG: boolean): Element;
+export declare function mountArrayChildren(children: any, dom: Element, lifecycle: LifecycleClass, context: Object, isSVG: boolean): void;
+export declare function mountComponent(vNode: VNode, parentDom: Element, lifecycle: LifecycleClass, context: Object, isSVG: boolean, isClass: number): any;
+export declare function mountClassComponentCallbacks(vNode: VNode, ref: any, instance: any, lifecycle: LifecycleClass): void;
+export declare function mountFunctionalComponentCallbacks(ref: any, dom: any, lifecycle: LifecycleClass): void;
+export declare function mountRef(dom: Element, value: any, lifecycle: LifecycleClass): void;

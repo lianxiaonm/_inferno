@@ -1,0 +1,8 @@
+
+.DS_Store/
+.idea/
+.svn/
+node_modules/
+deployed/
+logs/
+

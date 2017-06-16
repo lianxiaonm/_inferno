@@ -1,0 +1,24 @@
+@theme: "../../../plugin/common/less";
+@import (reference) "@{theme}/mixins.less";
+
+.scroll-wrapper h3 {
+    .px2auto-multi(padding, 10, 60, 10, 30);
+    background: #CCC;
+}
+
+.m-row.font-page {
+    .border-handle(1000, #D8D8D8, solid);
+    .col-4 {
+        .px2rem(font-size, 20);
+        .border-handle(0110, #D8D8D8, solid);
+        &:nth-of-type(3n):before {
+            border-right-width: 0;
+        }
+        p { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; .px2auto-multi(padding, 0, 16) }
+        .px2auto-multi(padding, 20, 0);
+        .icon-font {
+            font-size: .7rem; color: #666; display: block; text-align: center; .px2rem(padding, 20)
+        }
+    }
+}
+

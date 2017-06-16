@@ -1,0 +1,69 @@
+@import (reference) "mixins.less";
+//
+@keyframes tab-scale {
+    from { transform: scaleX(0) }
+    to { transform: scaleX(1) }
+}
+
+@-webkit-keyframes tab-scale {
+    from { webkit-transform: scaleX(0) }
+    to { webkit-transform: scaleX(1) }
+}
+
+.tab-view {
+    position: relative;
+    .tab-nav {
+        display: flex; display: -webkit-flex;
+        > li {
+            .px2rem(height, 66); .px2rem(line-height, 66); .px2rem(font-size, 20); opacity: .5;
+            flex: 1; -webkit-flex: 1; text-align: center; border-bottom: .06rem solid transparent;
+            -webkit-transition: color .2s; transition: color .2s;
+            &.on { color: #20A0FF; border-bottom-color: #20A0FF; opacity: 1 }
+        }
+    }
+    .tab-body {
+        .border-handle(1000, #D8D8D8, solid);
+    }
+    .tab-panel {
+        position: relative; display: none; .px2auto-multi(padding, 20, 30); .px2rem(font-size, 24);
+        &.on { display: block; }
+    }
+    &.card {
+        .tab-nav {
+            .border-handle(1111, #D8D8D8, solid); .px2auto-multi(margin, 12, 20);
+            &:before { .px2rem(border-radius, 100); }
+            > li {
+                border-bottom: none;
+                .border-handle(0100, #D8D8D8, solid);
+                &:last-of-type:before { content: none }
+            }
+        }
+        .tab-body:before { content: none }
+    }
+    &.inline-x {
+        .tab-nav-v1 { .px2rem(height, 66); position: relative;
+            .scroll-body { white-space: nowrap;
+                > span {
+                    .px2rem(height, 66); .px2rem(line-height, 66); .px2rem(font-size, 20); opacity: .5;
+                    position: relative; text-align: center; display: inline-block;
+                    .px2auto-multi(padding, 0, 20); .px2rem(min-width, 150);
+                    border-bottom: .06rem solid transparent;
+                    -webkit-transition: color .2s; transition: color .2s;
+                    &.on { color: #20A0FF; border-bottom-color: #20A0FF; opacity: 1 }
+                }
+            }
+        }
+    }
+    &._v1 {
+        .tab-nav > li,
+        .tab-nav-v1 .scroll-body > span {
+            position: relative; border-bottom: none;
+            &.on { border-bottom: none;
+                &:after {
+                    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: .04rem; background: #20A0FF;
+                    -webkit-animation: tab-scale .3s; animation: tab-scale .3s;
+                }
+            }
+        }
+    }
+}

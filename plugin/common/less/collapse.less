@@ -1,0 +1,29 @@
+@import (reference) "mixins.less";
+//
+.collapse.item-view {
+    .item-list {
+        .px2auto-multi(padding, 0); overflow: hidden;
+        &:before { left: 0 }
+        .collapse-item-bar {
+            color: #48576A; .px2auto-multi(padding, 0, 30); .px2rem(font-size, 28); .px2rem(line-height, 80);
+            .icon-font {
+                font-size: .42rem; .px2rem(margin-right, 20);
+                &.icon-right:before { -webkit-transition: all .3s; transition: all .3s; display: inline-block }
+            }
+            &:active { background: #FBFDFF }
+        }
+        .collapse-item-wrap {
+            .border-handle(1000, #D8D8D8, solid);
+            .px2auto-multi(padding, 0, 30); .px2rem(font-size, 24);
+            background: #FBFDFF; color: #1F2D3D; line-height: 1.5; height: 0;
+        }
+        &.on {
+            .collapse-item-bar {
+                .icon-font.icon-right:before { -webkit-transform: rotate(90deg); transform: rotate(90deg); }
+            }
+            .collapse-item-wrap {
+                .px2auto-multi(padding, 20, 30); height: auto;
+            }
+        }
+    }
+}

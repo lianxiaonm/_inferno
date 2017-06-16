@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      "inferno-shared@^1.5.1",
+      "D:\\webStrom\\node\\babelEs6\\node_modules\\inferno"
+    ]
+  ],
+  "_cnpm_publish_time": 1490636831544,
+  "_from": "inferno-shared@>=1.5.1 <2.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "inferno-shared@1.5.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/inferno-shared",
+  "_nodeVersion": "7.7.3",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/inferno-shared-1.5.1.tgz_1490636830929_0.5099220417905599"
+  },
+  "_npmUser": {
+    "email": "sampo.kivisto@live.fi",
+    "name": "havunen"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "inferno-shared",
+    "raw": "inferno-shared@^1.5.1",
+    "rawSpec": "^1.5.1",
+    "scope": null,
+    "spec": ">=1.5.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/inferno"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/inferno-shared/download/inferno-shared-1.5.1.tgz",
+  "_shasum": "8815768e7430929063036b3691866160af234087",
+  "_shrinkwrap": null,
+  "_spec": "inferno-shared@^1.5.1",
+  "_where": "D:\\webStrom\\node\\babelEs6\\node_modules\\inferno",
+  "author": {
+    "email": "dg@domgan.com",
+    "name": "Dominic Gannaway"
+  },
+  "bugs": {
+    "url": "https://github.com/infernojs/inferno/issues"
+  },
+  "dependencies": {},
+  "description": "Helpers functions for Inferno",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "noattachment": false,
+    "shasum": "8815768e7430929063036b3691866160af234087",
+    "size": 3234,
+    "tarball": "http://registry.npm.taobao.org/inferno-shared/download/inferno-shared-1.5.1.tgz"
+  },
+  "homepage": "https://github.com/infernojs/inferno#readme",
+  "inferno:main": "dist-es/index.js",
+  "keywords": [
+    "helpers",
+    "inferno"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "havunen",
+      "email": "sampo.kivisto@live.fi"
+    },
+    {
+      "name": "longlho",
+      "email": "holevietlong@gmail.com"
+    },
+    {
+      "name": "lukesheard",
+      "email": "me@lukesheard.com"
+    },
+    {
+      "name": "nightwolfz",
+      "email": "ryan@megidov.com"
+    },
+    {
+      "name": "trueadm",
+      "email": "dg@domgan.com"
+    }
+  ],
+  "name": "inferno-shared",
+  "optionalDependencies": {},
+  "publish_time": 1490636831544,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infernojs/inferno.git"
+  },
+  "rollup": {
+    "moduleName": "Inferno.Shared"
+  },
+  "scripts": {},
+  "typings": "dist/index.d.ts",
+  "version": "1.5.1"
+}

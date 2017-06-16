@@ -1,0 +1,40 @@
+@import (reference) "mixins.less";
+//
+.simple-pwd {
+    display: flex; display: -webkit-flex;
+    .border-handle(1111, #D8D8D8, solid);
+    .px2auto-multi(margin, 0, 30);
+    &:before { .px2rem(border-radius, 10) }
+    > li {
+        .border-handle(0001, #D8D8D8, solid);
+        flex: 1; -webkit-flex: 1; display: inline-block;
+        background: #FFF; text-align: center;
+        .px2rem(line-height, 88);
+        .px2rem(font-size, 28);
+        &:first-of-type:before { content: none }
+    }
+}
+
+.popup-body .made-body.pwd {
+    .made-title { .border-handle(0010, #D8D8D8, solid) }
+    .pwd-group h4 { visibility: hidden; }
+    .corner + button { margin-top: 0 }
+}
+
+.pwd-group {
+    h4 { .px2rem(font-size, 24); .px2rem(padding-left, 30); color: #666; line-height: 2; }
+    .px2auto-multi(margin, 20, 0);
+    &.default .simple-pwd,
+    &.simple .form-input { display: none }
+    .form-input {
+        &:before { border-top: 1px solid #DDD; }
+        &.error:before { border-bottom-color: #F00 }
+        label { color: #333 }
+    }
+    .corner {
+        .px2rem(font-size, 22); color: #49A6FF; text-align: right;
+        .px2auto-multi(margin, 0, 30); .px2rem(min-height, 60);
+        a { .px2rem(line-height, 60); .px2auto-multi(margin, 10, 0, 10, 30); display: inline-block }
+    }
+}
+

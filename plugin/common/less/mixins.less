@@ -1,0 +1,244 @@
+/*
+* 设备像素比(device pixel ratio ) dpr = 2
+* 设备独立像素(density-independent pixel) dip: 320px
+* 因此基于的高清视觉稿物理设备像素宽是： 640px（ 如：iphone5一屏物理分辨率：640px * 1136px ）
+* 新视觉稿件采用了iphone6标准，故@standard-width: 375 * 2;
+*/
+@standard-width: 375 * 2;
+@baseRem: @standard-width / 10;
+
+//不能完全自适应，略有误差
+.px2percent(@name, @px, @padding) {
+    @{name}: (@px - @padding)/@standard-width*100%;
+}
+//该函数用于向@setName属性中增加!important属性。通过判断less方法中最后一个传递参数是否为important来决定，
+.addImportantBySetArgs(@setName, @arguments) when (extract(@arguments,length(@arguments))=important) {
+    @{setName}+_: '!important';
+}
+/**
+ * 如果当前param单位为px,根据dpr计算[data-dpr]里面的对应px
+ */
+.doDprSpecialPx(@param, @dpr) when (ispixel(@param)) {
+    @{name}+_: round(@param * @dpr / 2) * 1px;
+}
+/**
+ * 如果当前param单位为非px，则执行px2auto方法，自动适配
+ */
+.doDprSpecialPx(@param, @dpr) when not (ispixel(@param)) {
+    .px2auto(@name, @param);
+}
+/**
+ * 循环编译当前@rest队列里面的param，并放到[data-dpr]的里面
+ */
+.doDpr(@counter, @name, @px, @rest...) when (@counter = 1) {
+    [data-dpr = "2"] & {
+        .loop(@counter) when (@counter > 0) {
+            .loop((@counter - 1)); // 递归调用自身
+            .doDprSpecialPx(extract(@rest, @counter), 2);
+        }
+        .loop(length(@rest));
+    }
+}
+.doDpr(@counter, @name, @px, @rest...) when (@counter = 2) {
+    [data-dpr = "2.5"] & {
+        .loop(@counter) when (@counter > 0) {
+            .loop((@counter - 1)); // 递归调用自身
+            .doDprSpecialPx(extract(@rest, @counter), 2.5);
+        }
+        .loop(length(@rest));
+    }
+}
+.doDpr(@counter, @name, @px, @rest...) when (@counter = 3) {
+    [data-dpr = "2.75"] & {
+        .loop(@counter) when (@counter > 0) {
+            .loop((@counter - 1)); // 递归调用自身
+            .doDprSpecialPx(extract(@rest, @counter), 2.75);
+        }
+        .loop(length(@rest));
+    }
+}
+.doDpr(@counter, @name, @px, @rest...) when (@counter = 4) {
+    [data-dpr = "3"] & {
+        .loop(@counter) when (@counter > 0) {
+            .loop((@counter - 1)); // 递归调用自身
+            .doDprSpecialPx(extract(@rest, @counter), 3);
+        }
+        .loop(length(@rest));
+    }
+}
+.doDpr(@counter, @name, @px, @rest...) when (@counter = 5) {
+    [data-dpr = "4"] & {
+        .loop(@counter) when (@counter > 0) {
+            .loop((@counter - 1)); // 递归调用自身
+            .doDprSpecialPx(extract(@rest, @counter), 4);
+        }
+        .loop(length(@rest));
+    }
+}
+// 该函数用于不同设备的布局适配
+// 例如 .px2rem(height, 80)：其中80为取自高清视觉稿直接值
+.px2rem(@name, @px, @rest...) {
+    @{name}+_: @px / @baseRem * 1rem;
+    .addImportantBySetArgs(@name, @rest);
+}
+// 该函数用于不同设备的保持一致的属性（如字体等）
+// 对于字体缩放问题，设计师原本的要求是这样的：任何手机屏幕上字体大小都要统一
+// 例如
+// .px2rem(font-size, 80) ：其中80为取自高清视觉稿直接值
+// 注意：在我们的项目中，当且仅当需要设置的属性值小于6px的时候才用此方法
+.px2px(@name, @px, @rest...) when not ( length(@rest)=0) and not (extract(@rest, 1)=important){
+    @{name}+_: round(@px / 2) * 1px;
+    .loop(@counter) when (@counter > 0) {
+        .loop((@counter - 1)); // 递归调用自身
+        .doDpr(@counter, @name, unit(@px, px), @rest);
+    }
+    .loop(5);
+    .addImportantBySetArgs(@name, extract(@rest, 1));
+}
+.px2px(@name, @px, @rest...) when ( length(@rest)=0) {
+    @{name}+_: round(@px / 2) * 1px;
+    .loop(@counter) when (@counter > 0) {
+        .loop((@counter - 1)); // 递归调用自身
+        .doDpr(@counter, @name, unit(@px, px), unit(@px, px), @rest);
+    }
+    .loop(5);
+    .addImportantBySetArgs(@name, extract(@rest, 1));
+}
+.px2px(@name, @px, @rest...) when (extract(@rest, 1)=important) {
+    @{name}+_: round(@px / 2) * 1px;
+    .loop(@counter) when (@counter > 0) {
+        .loop((@counter - 1)); // 递归调用自身
+        .doDpr(@counter, @name, unit(@px, px), unit(@px, px), @rest);
+    }
+    .loop(5);
+    .addImportantBySetArgs(@name, extract(@rest, 1));
+}
+/**
+ * 该函数用于设置一些属性值为：字符串/百分比/0等等属性。
+ * 如：margin: auto; 可以用.px2other(margin, auto);实现
+ */
+//当@px不为important时，直接转换
+.px2other(@name, @px, @rest...) when not (@px = important) {
+    @{name}+_: @px;
+}
+//当@px为important时，编译为!important
+.px2other(@name, @px, @rest...) when (@px = important) and not (extract(@rest, 1) = important){
+    @{name}+_: '!important';
+}
+//当@px不为important,但是附加字段为important,则在前面编译完成后，最后编译加上!important
+.px2other(@name, @px, @rest...) when not (@px = important) and (extract(@rest, 1) = important){
+    .addImportantBySetArgs(@name, @rest);
+}
+/**
+ * 该方法对.px2rem,.px2px,.px2other进行了封装，能够传入的参数进行自动判断，
+ * 并采用对应的方法进行计算。
+ * 如：
+ * .px2auto(margin, 0); -> margin:0;
+ * .px2auto(margin, auto); -> margin: auto;
+ * .px2auto(margin, 10%); -> margin: 10%;
+ * .px2auto(margin, 64); -> margin: 1rem;
+ * .px2auto(margin, 64px); -> [data-dpr="2"] {margin:64px;}
+ *                            [data-dpr="4"] {margin:128px;}....
+ *
+ * @rest里面可以传递附加字段。如:.px2auto(margin-left, 10%, important);
+ *
+ */
+.px2auto(@name, @px, @rest...) when (ispixel(@px)) {
+    .px2px(@name, @px, @rest);
+}
+.px2auto(@name, @px, @rest...) when (isunit(@px, '%')) {
+    .px2other(@name, @px, @rest);
+}
+.px2auto(@name, @px, @rest...) when (isunit(@px, rem)) {
+    .px2other(@name, @px, @rest);
+}
+.px2auto(@name, @px, @rest...) when (isnumber(@px)) and not(@px=0) and not(ispixel(@px)) and not(isunit(@px, '%')) and not(isunit(@px, rem)){
+    .px2rem(@name, @px, @rest);
+}
+.px2auto(@name, @px, @rest...) when (isnumber(@px)) and (@px=0){
+    .px2other(@name, @px, @rest);
+}
+.px2auto(@name, @px, @rest...) when not (ispixel(@px)) and not (isnumber(@px)){
+    .px2other(@name, @px, @rest);
+}
+/**
+ *此方法为多字段编译的方法。@rest为拓展字段，可以传入N个值
+ *例如：
+ *.px2auto-mulit(margin, 64, 64, 64, 64, important);
+ *      ->  margin:1rem 1rem 1rem 1rem !important;
+ *.px2auto-mulit(padding, 10px, 10%, 64, 2rem, important);
+ *      ->  margin:5px 10% 1rem, 2rem !important;
+ *          [data-dpr="2"]{margin:10px 10% 1rem, 2rem !important; }
+ *          [data-dpr="3"]{margin:15px 10% 1rem, 2rem !important; }
+ *          ....
+ *
+ */
+.px2auto-multi(@name,@rest...) {
+    .loop(@counter) when (@counter > 0) {
+        .loop((@counter - 1)); // 递归调用自身
+        .px2auto(@name, extract(@rest, @counter), @rest);
+    }
+    .loop(length(@rest));
+}
+.set-border-by-width(@name, @width) when(@width = 0){
+    @{name}: 0;
+}
+.set-border-by-width(@name, @width) when not(@width = 0){
+    @{name}: 1px;
+}
+.color(@name, @color) when (isColor(@color)){
+    @{name}: @color;
+}
+.border-radius(@name, @radius) {
+    @{name}: @radius;
+}
+/*
+* 生成上下左右边框
+* @param width 为4位整数，上右下左分别对应千、百、十、个位，每个位值只有 0或1，0表示该位置无边，1为有
+*  例 0110，表示 4个边框中， 无top、right 1px、bottom 1px、 无left
+*/
+.border-width (@reg, @width, @borderStyle) when (mod(@reg , 10) = 1) {
+    .set-border-by-width(border-left-width, @width);
+    border-left-style: @borderStyle;
+}
+.border-width (@reg, @width, @borderStyle) when (mod(@reg , 100) >= 10) {
+    .set-border-by-width(border-bottom-width, @width);
+    border-bottom-style: @borderStyle;
+}
+.border-width (@reg, @width, @borderStyle) when (mod(@reg , 1000) >= 100) {
+    .set-border-by-width(border-right-width, @width);
+    border-right-style: @borderStyle;
+}
+.border-width (@reg, @width, @borderStyle) when (@reg >= 1000) {
+    .set-border-by-width(border-top-width, @width);
+    border-top-style: @borderStyle;
+}
+
+.border-handle(@border-width: 1111, @borderColor: #DDD, @borderStyle: solid, @radius: 0px) {
+    & {
+        position: relative;
+    }
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        box-sizing: border-box;
+        pointer-events: none;
+        border: 0;
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+        /*用虚拟键盘的时候需要z-index，不然border会被遮住*/
+        z-index: 99;
+    }
+    &:before {
+        .border-width(@border-width, @borderColor, @borderStyle);
+        .color(border-color, @borderColor);
+        .border-radius(border-radius, @radius);
+    }
+    //.radius-ratio(@radius);
+}

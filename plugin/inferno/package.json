@@ -1,0 +1,124 @@
+{
+  "_args": [
+    [
+      "inferno",
+      "D:\\webStrom\\node\\babelEs6"
+    ]
+  ],
+  "_cnpm_publish_time": 1490807832652,
+  "_from": "inferno@*",
+  "_hasShrinkwrap": false,
+  "_id": "inferno@1.5.5",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/inferno",
+  "_nodeVersion": "7.7.3",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/inferno-1.5.5.tgz_1490807831419_0.09089585859328508"
+  },
+  "_npmUser": {
+    "email": "sampo.kivisto@live.fi",
+    "name": "havunen"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "inferno",
+    "raw": "inferno",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/inferno/download/inferno-1.5.5.tgz",
+  "_shasum": "9b266529f6335865f03f96f641dee73b64c0cd66",
+  "_shrinkwrap": null,
+  "_spec": "inferno",
+  "_where": "D:\\webStrom\\node\\babelEs6",
+  "author": {
+    "email": "dg@domgan.com",
+    "name": "Dominic Gannaway"
+  },
+  "bugs": {
+    "url": "https://github.com/infernojs/inferno/issues"
+  },
+  "dependencies": {
+    "inferno-shared": "^1.5.1",
+    "inferno-vnode-flags": "^1.5.1"
+  },
+  "description": "An extremely fast, React-like JavaScript library for building modern user interfaces",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "noattachment": false,
+    "shasum": "9b266529f6335865f03f96f641dee73b64c0cd66",
+    "size": 95829,
+    "tarball": "http://registry.npm.taobao.org/inferno/download/inferno-1.5.5.tgz"
+  },
+  "homepage": "https://github.com/infernojs/inferno#readme",
+  "inferno:main": "dist-es/index.js",
+  "keywords": [
+    "babel",
+    "browser",
+    "dom",
+    "framework",
+    "html",
+    "inferno",
+    "interfaces",
+    "react",
+    "renderToString",
+    "rollup",
+    "server",
+    "user interfaces"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "havunen",
+      "email": "sampo.kivisto@live.fi"
+    },
+    {
+      "name": "kflash",
+      "email": "kflash123@gmail.com"
+    },
+    {
+      "name": "longlho",
+      "email": "holevietlong@gmail.com"
+    },
+    {
+      "name": "lukesheard",
+      "email": "me@lukesheard.com"
+    },
+    {
+      "name": "nightwolfz",
+      "email": "ryan@megidov.com"
+    },
+    {
+      "name": "trueadm",
+      "email": "dg@domgan.com"
+    }
+  ],
+  "name": "inferno",
+  "optionalDependencies": {},
+  "publish_time": 1490807832652,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infernojs/inferno.git"
+  },
+  "rollup": {
+    "bundledDependencies": [
+      "inferno-shared",
+      "inferno-vnode-flags"
+    ],
+    "moduleName": "Inferno"
+  },
+  "scripts": {},
+  "typings": "dist/index.d.ts",
+  "version": "1.5.5"
+}

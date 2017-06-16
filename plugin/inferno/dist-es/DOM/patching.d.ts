@@ -1,0 +1,14 @@
+import { LifecycleClass } from 'inferno-shared';
+import { VNode } from '../core/VNodes';
+import { Styles } from '../core/structures';
+export declare function patch(lastVNode: VNode, nextVNode: VNode, parentDom: Element, lifecycle: LifecycleClass, context: Object, isSVG: boolean, isRecycling: boolean): void;
+export declare function patchElement(lastVNode: VNode, nextVNode: VNode, parentDom: Node, lifecycle: LifecycleClass, context: Object, isSVG: boolean, isRecycling: boolean): void;
+export declare function patchComponent(lastVNode: any, nextVNode: any, parentDom: any, lifecycle: LifecycleClass, context: any, isSVG: boolean, isClass: number, isRecycling: boolean): boolean;
+export declare function patchText(lastVNode: VNode, nextVNode: VNode): void;
+export declare function patchVoid(lastVNode: VNode, nextVNode: VNode): void;
+export declare function patchNonKeyedChildren(lastChildren: any, nextChildren: any, dom: any, lifecycle: LifecycleClass, context: Object, isSVG: boolean, isRecycling: boolean): void;
+export declare function patchKeyedChildren(a: VNode[], b: VNode[], dom: any, lifecycle: LifecycleClass, context: any, isSVG: boolean, isRecycling: boolean): void;
+export declare function isAttrAnEvent(attr: string): boolean;
+export declare function patchProp(prop: any, lastValue: any, nextValue: any, dom: Element, isSVG: boolean, hasControlledValue: boolean): void;
+export declare function patchEvent(name: string, lastValue: any, nextValue: any, dom: any): void;
+export declare function patchStyle(lastAttrValue: string | Styles, nextAttrValue: string | Styles, dom: any): void;

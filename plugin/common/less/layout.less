@@ -1,0 +1,217 @@
+@import (reference) "mixins.less";
+//
+html { -webkit-text-size-adjust: 100%; }
+
+* {
+    -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; outline: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &::-webkit-scrollbar { height: 0; width: 0; visibility: hidden }
+}
+
+body {
+    -webkit-overflow-scrolling: touch;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+ul, li { list-style: none }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal }
+
+.hidden { display: none }
+
+.m-row {
+    &:before { display: table; content: '' }
+    &:after { clear: both; display: table; content: '' }
+    > [class ^='col'] { position: relative; min-height: 1px; float: left; text-align: center }
+    .col-6 { width: 50%; }
+    .col-4 { width: 33.33333333%; }
+    .col-3 { width: 25%; }
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('../fonts/iconfont.woff') format('woff'), /* chrome, firefox */ url('../fonts/iconfont.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+@font-face {
+    font-family: "iconfont-tools";
+    src: url('../fonts/iconfont-tools.woff') format('woff'), /* chrome, firefox */ url('../fonts/iconfont-tools.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+.icon-font, .icon-tools {
+    font-size: 0.6rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes rotating {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(1turn) }
+}
+
+@-webkit-keyframes rotating {
+    from { -webkit-transform: rotate(0deg) }
+    to { -webkit-transform: rotate(1turn) }
+}
+
+.icon-font {
+    font-family: "iconfont" !important;
+    &.icon-appreciate:before { content: "\e644"; }
+    &.icon-check:before { content: "\e645"; }
+    &.icon-close:before { content: "\e646"; }
+    &.icon-edit:before { content: "\e649"; }
+    &.icon-emoji:before { content: "\e64a"; }
+    &.icon-favor-fill:before { content: "\e64b"; }
+    &.icon-favor:before { content: "\e64c"; }
+    &.icon-loading:before, &.icon-loading1:before {
+        -webkit-animation: rotating 1s linear infinite;
+        animation: rotating 1s linear infinite;
+    }
+    &.icon-loading:before { content: "\e64e"; display: inline-block }
+    &.icon-loading1:before { content: "\e609"; display: inline-block }
+    &.icon-location-fill:before { content: "\e650"; }
+    &.icon-location:before { content: "\e651"; }
+    &.icon-phone:before { content: "\e652"; }
+    &.icon-round-check-fill:before { content: "\e656"; }
+    &.icon-round-check:before { content: "\e657"; }
+    &.icon-round-close-fill:before { content: "\e658"; }
+    &.icon-round-close:before { content: "\e659"; }
+    &.icon-search:before { content: "\e65c"; }
+    &.icon-time-fill:before { content: "\e65e"; }
+    &.icon-time:before { content: "\e65f"; }
+    &.icon-unfold:before { content: "\e661"; }
+    &.icon-warn-fill:before { content: "\e662"; }
+    &.icon-warn:before { content: "\e663"; }
+    &.icon-camera-fill:before { content: "\e664"; }
+    &.icon-camera:before { content: "\e665"; }
+    &.icon-comment-fill:before { content: "\e666"; }
+    &.icon-comment:before { content: "\e667"; }
+    &.icon-like-fill:before { content: "\e668"; }
+    &.icon-like:before { content: "\e669"; }
+    &.icon-back:before { content: "\e679"; }
+    &.icon-cascades:before { content: "\e67c"; }
+    &.icon-list:before { content: "\e682"; }
+    &.icon-more:before { content: "\e684"; }
+    &.icon-scan:before { content: "\e689"; }
+    &.icon-question-fill:before { content: "\e690"; }
+    &.icon-question:before { content: "\e691"; }
+    &.icon-pic:before { content: "\e69b"; }
+    &.icon-filter:before { content: "\e69c"; }
+    &.icon-top:before { content: "\e69e"; }
+    &.icon-right:before { content: "\e6a3"; }
+    &.icon-refresh:before { content: "\e6a4"; }
+    &.icon-more-android:before { content: "\e6a5"; }
+    &.icon-delete-fill:before { content: "\e6a6"; }
+    &.icon-qr-code:before { content: "\e6b0"; }
+    &.icon-remind:before { content: "\e6b2"; }
+    &.icon-delete:before { content: "\e6b4"; }
+    &.icon-address-book:before { content: "\e6bd"; }
+    &.icon-present:before { content: "\e6d3"; }
+    &.icon-square-check-fill:before { content: "\e6d4"; }
+    &.icon-square:before { content: "\e6d5"; }
+    &.icon-square-check:before { content: "\e6d6"; }
+    &.icon-round:before { content: "\e6d7"; }
+    &.icon-round-add-fill:before { content: "\e6d8"; }
+    &.icon-round-add:before { content: "\e6d9"; }
+    &.icon-fold:before { content: "\e6de"; }
+    &.icon-appreciate-fill:before { content: "\e6e3"; }
+    &.icon-info-fill:before { content: "\e6e4"; }
+    &.icon-info:before { content: "\e6e5"; }
+    &.icon-recharge-fill:before { content: "\e6ec"; }
+    &.icon-recharge:before { content: "\e6ed"; }
+    &.icon-vip-card:before { content: "\e6ee"; }
+    &.icon-wifi:before { content: "\e6f2"; }
+    &.icon-share:before { content: "\e6f3"; }
+    &.icon-barcode:before { content: "\e6fb"; }
+    &.icon-countdown-fill:before { content: "\e707"; }
+    &.icon-countdown:before { content: "\e708"; }
+    &.icon-notice-fill:before { content: "\e709"; }
+    &.icon-notice:before { content: "\e70a"; }
+    &.icon-qiang:before { content: "\e70b"; }
+    &.icon-female:before { content: "\e71a"; }
+    &.icon-male:before { content: "\e71c"; }
+    &.icon-camera-add:before { content: "\e724"; }
+    &.icon-camera-add-fill:before { content: "\e727"; }
+    &.icon-mark-fill:before { content: "\e730"; }
+    &.icon-mark:before { content: "\e731"; }
+    &.icon-post:before { content: "\e759"; }
+    &.icon-radio-box-fill:before { content: "\e763"; }
+    &.icon-add:before { content: "\e767"; }
+    &.icon-move:before { content: "\e768"; }
+    &.icon-emoji-fill:before { content: "\e78d"; }
+    &.icon-ask-fill:before { content: "\e7c9"; }
+    &.icon-ask:before { content: "\e7ca"; }
+}
+
+.icon-tools {
+    font-family: "iconfont-tools" !important;
+}
+
+//壹钱包头
+.yqb-header {
+    position: fixed; top: 0; left: 0; right: 0; background: #FFF; z-index: 999;
+    box-shadow: 0 0 1px #999; -webkit-box-shadow: 0 0 1px #999;
+    .px2rem(height, 100); .px2rem(font-size, 30);
+    .head-left, .head-right {
+        position: absolute; top: 0; color: #666; .px2rem(height, 100);
+        > i {
+            .px2rem(line-height, 100);
+            .px2rem(height, 100);
+            display: inline-block;
+            .px2auto-multi(padding, 0, 20);
+            font-style: normal;
+            &.icon {
+                .px2rem(width, 90); background-size: 50%;
+                background-position: center;
+                background-image: url(../images/icon-more.png);
+                background-repeat: no-repeat;
+            }
+            + i { padding-left: 0 }
+            &:active { opacity: .5 }
+        }
+    }
+    .head-left { left: 0 }
+    .head-right { right: 0 }
+    .head-title {
+        .px2rem(line-height, 100); font-weight: normal;
+        text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
+        .px2auto-multi(padding, 0, 160); text-align: center;
+    }
+    + .page-body { .px2rem(padding-top, 99) }
+    + .scroll-wrapper { .px2rem(top, 99); }
+}
+
+.page-body { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; overflow-y: auto; overflow-x: hidden; }
+
+.scroll-wrapper {
+    position: absolute; z-index: 2; top: 0; bottom: 0; left: 0; width: 100%; overflow: hidden;
+    > .scroll-body {
+        position: absolute; z-index: 1; min-width: 100%; -webkit-transform: translateZ(0); transform: translateZ(0);
+        > .bottom-pocket, .top-pocket {
+            position: absolute; left: 0; right: 0; z-index: 999; text-align: center; color: #999;
+            .px2auto-multi(margin, 0, auto); .px2rem(padding, 30); font-size: 1.1em;
+        }
+        > .top-pocket {
+            top: 0; -webkit-transform: translateY(-100%); transform: translateY(-100%);
+        }
+        > .bottom-pocket {
+            bottom: 0; -webkit-transform: translateY(100%); transform: translateY(100%);
+        }
+    }
+}
+
+.item-view {
+    position: relative; .px2rem(font-size, 32); background: #FFF;
+    //border-style: solid; border-color: #CCC; border-width: .55px 0;
+    .border-handle(1000, #D8D8D8, solid);
+    .item-list {
+        //border-bottom: .55px solid #CCC;
+        .border-handle(0010, #D8D8D8, solid);
+        position: relative; .px2auto-multi(padding, 24, 30);
+        &:before { .px2rem(left, 30); }
+        &:last-of-type:before { left: 0; }
+    }
+}
+
+.action-sheet .item-view .item-list:before { left: 0; }

@@ -1,0 +1,48 @@
+@import (reference) "mixins.less";
+//
+
+.search-input {
+    .px2rem(padding, 15); .border-handle(0010, #D8D8D8, solid);
+    > .icon-font {
+        position: absolute; top: 50%; font-size: .65rem; .px2rem(left, 20); color: #999;
+        -webkit-transform: translateY(-50%); transform: translateY(-50%);
+        + .form-input { .px2rem(margin-left, 70); }
+    }
+    .form-input {
+        &:before { border: 1px solid #D8D8D8; .px2rem(border-radius, 10); }
+        input {
+            .px2rem(padding-top, 5); .px2rem(padding-bottom, 5); .px2rem(font-size, 26);
+            color: #666; background: #F9F9F9;
+        }
+        .clear, .r_btn { .px2rem(top, 5) }
+        .clear:before { content: '\e646'; }
+        &.small {
+            input { .px2rem(padding-right, 130); }
+            .clear { .px2rem(right, 90) }
+        }
+    }
+    + .search-result.item-view {
+        &:before { content: none }
+        .px2rem(font-size, 28);
+    }
+}
+
+.model-container {
+    .search-body { top: 0;
+        .search-result {
+            position: absolute; .px2rem(top, 100); bottom: 0; left: 0; right: 0; overflow-x: hidden; overflow-y: auto;
+        }
+        //天猫的搜索
+        &.sch-tMall {
+            .search-result { .px2rem(padding, 20);
+                &:before { display: table; content: '' }
+                &:after { clear: both; display: table; content: '' }
+                .item-list {
+                    width: 50%; float: left; .px2auto-multi(padding, 24, 10); .px2rem(line-height, 28);
+                    text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+                    &:before { left: 0 }
+                }
+            }
+        }
+    }
+}

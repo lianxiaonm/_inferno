@@ -1,0 +1,6 @@
+{
+    "resultCode": "1000",
+    "resultMsg": "发送成功!",
+    "otpSessionId": "otp_session_id",
+    "retrySeconds": 60
+}

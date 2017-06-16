@@ -1,0 +1,5 @@
+{
+    "resultCode": 1000,
+    "resultMsg": "验证成功",
+    "captchaToken": "captcha_validated_token"
+}
