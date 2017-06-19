@@ -42,7 +42,7 @@ module.exports = {
         path: path.resolve(__dirname, 'deployed'),
         filename: '[name].js',
         chunkFilename: "[name].js",
-        publicPath: 'deployed/'
+        publicPath: '/deployed/'
     },
     resolve: {
         alias: {
@@ -107,8 +107,8 @@ module.exports = {
             allChunks: true
         }),
         //new htmlWebpackPlugin()
-        //new webpack.optimize.UglifyJsPlugin({
-        //    compress: {warnings: false}
-        //})
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {warnings: false}
+        })
     ]
 }

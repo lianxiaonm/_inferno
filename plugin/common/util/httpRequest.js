@@ -6,7 +6,6 @@ import {
     noop, fromJson
 } from '../service/common'
 import $q from '../service/$q'
-import $log from '../service/log'
 import $http from '../service/http'
 import finger from './FW.finger'
 import utility from './FW.utility'

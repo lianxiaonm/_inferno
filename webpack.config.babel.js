@@ -99,5 +99,8 @@ export default {
         new ExtractTxtPlugin("[name].css", {
             allChunks: true
         }),
+        //new webpack.optimize.UglifyJsPlugin({
+        //    compress: {warnings: false}
+        //})
     ]
 }

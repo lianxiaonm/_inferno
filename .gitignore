@@ -5,4 +5,4 @@
 node_modules/
 deployed/
 logs/
-
+node_path/

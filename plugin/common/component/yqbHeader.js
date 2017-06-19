@@ -1,7 +1,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 
-import { forEach, toJson, equals, extend, valueFn } from '../service/common'
+import { forEach, toJson, equals, extend, valueFn, browser } from '../service/common'
 
 import injectNative from '../util/injectNative'
 
@@ -26,7 +26,7 @@ function updateOption(option) {
         left.show = left.closeShow = !1, left.isShow = 'hide';
     } else {
         left.show = !0, left.isShow = 'show';
-        left.close = !left.hideClose && appVer;
+        left.close = !left.hideClose && browser && appVer;
     }
     // 配置中间 title 部分
     document.title = option.title.value;

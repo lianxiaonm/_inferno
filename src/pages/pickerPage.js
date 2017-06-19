@@ -7,7 +7,7 @@ import Picker from '../../plugin/common/component/picker'
 import DatePicker from '../../plugin/common/component/datePicker'
 import LinkagePicker from '../../plugin/common/component/linkagePicker'
 
-import { forEach } from '../../plugin/common/service/common'
+import { forEach, browser } from '../../plugin/common/service/common'
 import $popPicker from '../../plugin/common/service/popPicker'
 import { $popUp } from '../../plugin/common/service/ionic-lite'
 
@@ -32,8 +32,8 @@ export default class pickerPage extends Component {
                 {text: 'date的日期选择器', tap: this.datePopPicker.bind(this, 'date')},
                 {text: 'month的日期选择器', tap: this.datePopPicker.bind(this, 'month')},
                 {text: 'hour的日期选择器', tap: this.datePopPicker.bind(this, 'hour')},
-                {text: '省市联动', tap: this.linkagePopPicker.bind(this, cityData)},
-                {text: '省市区联动', tap: this.linkagePopPicker.bind(this, cityData3)},
+                {text: '省市联动', tap: this.linkagePopPicker.bind(this, browser ? cityData : [])},
+                {text: '省市区联动', tap: this.linkagePopPicker.bind(this, browser ? cityData3 : [])},
                 {
                     text: '简单的单选', tap: this.linkagePopPicker.bind(this, [
                     {txt: '陈宇', val: 'cy'},
@@ -104,17 +104,19 @@ export default class pickerPage extends Component {
                     state.dateBtn.map(item => <button onTap={item.tap}>{item.text}</button>)
                 }
                 <h2>普通的picker:{state.val}</h2>
-                <Picker pList={state.pList} change={this.pkChange}
-                        pIdx={state.idx} type="1"/>
+                <Picker pList={state.pList} change={this.pkChange} pIdx={state.idx} type="1"/>
 
                 <h2>日期picker:{getSelect(state.datePk, '-')}</h2>
                 <DatePicker options={options} change={this.datePkChange}/>
-
                 <h2>省市Picker:{getSelect(state.areaPk, '/', 'txt')}</h2>
-                <LinkagePicker pkList={cityData} change={this.areaPkChange}/>
+                {
+                    browser ? <LinkagePicker pkList={cityData} change={this.areaPkChange}/> : ''
+                }
 
                 <h2>省市区Picker:{getSelect(state.area3Pk, '/', 'txt')}</h2>
-                <LinkagePicker pkList={cityData3} change={this.area3PkChange}/>
+                {
+                    browser ? <LinkagePicker pkList={cityData3} change={this.area3PkChange}/> : ''
+                }
             </Page>
         )
     }

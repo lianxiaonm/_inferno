@@ -1,7 +1,7 @@
 import Inferno, { linkEvent } from 'inferno'
 // import {Provider} from 'inferno-redux'
 import { Router } from 'inferno-router'
-import createHashHistory from 'history/createHashHistory'
+import createHashHistory from 'history/createBrowserHistory'
 
 
 import routes from './configs/routes'
