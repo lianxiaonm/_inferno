@@ -3,7 +3,7 @@ import Inferno from 'inferno';
 import Component from 'inferno-component';
 import Page from '../../plugin/common/component/page'
 import Input, { Form } from  '../../plugin/common/component/input'
-import SimplePwd,{ Password, modelPwd} from '../../plugin/common/component/simplePwd'
+import SimplePwd, { Password, modelPwd } from '../../plugin/common/component/simplePwd'
 
 import $keyboard from '../../plugin/common/service/keyboard'
 import { $popUp } from '../../plugin/common/service/ionic-lite'
@@ -52,7 +52,7 @@ class payPwdPage extends Component {
             maxLen = inputs.maxLen || Number.MAX_VALUE,
             value = inputs.value || '';
         $keyboard[idx == 0 ? 'number' : idx == 1 ?
-            'idCard' : 'simplePwd'](false, char=> {
+            'idCard' : 'simplePwd'](false, char => {
             if (char == 'back') {
                 value = [].slice.call(value, 0, -1).join('');
             } else if (char == '确定' || value.length >= maxLen) {
@@ -65,7 +65,8 @@ class payPwdPage extends Component {
         })
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let inputList = state.inputList || [],
             options = state.options,
             options1 = state.options1,
@@ -74,7 +75,7 @@ class payPwdPage extends Component {
             <Page option={state.option}>
                 <Form btnTxt="提交">
                     {
-                        inputList.map(item=><Input
+                        inputList.map(item => <Input
                             name={item.name}
                             readonly="true"
                             onTap={item.tap}

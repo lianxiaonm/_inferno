@@ -25,8 +25,9 @@ export default class Tabs extends Component {
         });
     }
 
-    render(props, state) {
-        let className = ['tab-view'],
+    render() {
+        let {props, state} = this,
+            className = ['tab-view'],
             scrollType = props.scrollType,
             options = {},
             children = props.children || [];
@@ -42,19 +43,17 @@ export default class Tabs extends Component {
                     !scrollType ? (
                         <ul className="tab-nav">
                             {
-                                children.map((item, idx) => {
-                                    return <li onTap={this.tapClick.bind(this, idx)}
-                                               className={state.active[idx] ? 'on' : ''}>{item.props.label}</li>;
-                                })
+                                children.map((item, idx) => <li
+                                    onTap={this.tapClick.bind(this, idx)}
+                                    className={state.active[idx] ? 'on' : ''}>{item.props.label}</li>)
                             }
                         </ul>
                     ) : (
                         <Scroll options={options} className="tab-nav-v1">
                             {
-                                children.map((item, idx) => {
-                                    return <span onTap={this.tapClick.bind(this, idx)}
-                                                 className={state.active[idx] ? 'on' : ''}>{item.props.label}</span>;
-                                })
+                                children.map((item, idx) => <span
+                                    onTap={this.tapClick.bind(this, idx)}
+                                    className={state.active[idx] ? 'on' : ''}>{item.props.label}</span>)
                             }
                         </Scroll>
                     )
@@ -76,7 +75,5 @@ export default class Tabs extends Component {
 export function TabPanel(props) {
     let className = ['tab-panel'];
     props.isActive && className.push('on');
-    return (
-        <div className={className.join(' ')}>{props.children}</div>
-    )
+    return <div className={className.join(' ')}>{props.children}</div>
 }

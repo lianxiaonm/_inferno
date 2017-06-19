@@ -54,8 +54,9 @@ export default class Search extends Component {
         this.setState(this.initState(nextProps))
     }
 
-    render(props, state) {
-        let className = ['search-body'];
+    render() {
+        let {props, state} = this,
+            className = ['search-body'];
         props.className && className.push(props.className);
         return (
             <div className={className.join(' ')}>
@@ -90,8 +91,9 @@ export class SearchInput extends Component {
         value == this.props.value || upChange.call(this, value, 100);
     }
 
-    render(props, state) {
-        let className = ['search-input'];
+    render() {
+        let {props} = this,
+            className = ['search-input'];
         props.className && className.push(props.className);
         return (
             <div className={className.join(' ')}>

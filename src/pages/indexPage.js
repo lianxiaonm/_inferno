@@ -25,7 +25,8 @@ class indexPage extends Component {
     }
 
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         let docList = [
             {url: '#/icon', text: 'icon图标'},
             {url: '#/dialog', text: 'dialog对话框'},

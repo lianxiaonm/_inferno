@@ -5,12 +5,12 @@ import { equals } from '../service/common'
 
 import '../less/picker.less'
 
-class Picker extends Component {
+export default class Picker extends Component {
     componentDidMount() {
         let props = this.props,
             domNode = this._vNode.dom,
             picker = this.picker = new window.$Picker(domNode);
-        picker.toggleEvent('change', ()=> {
+        picker.toggleEvent('change', () => {
             let props = this.props,
                 idx = props.pIdx = picker.getIdx();
             props.change && props.change(idx, props.pList[idx], props.type);
@@ -21,16 +21,13 @@ class Picker extends Component {
     componentWillReceiveProps(nextProp) {
         this._render = !equals(nextProp, this.props);
         this.props.pIdx != nextProp.pIdx && (this.pIdx = nextProp.pIdx);
-        //console.log(nextProp.type + '---------componentWillReceiveProps--------------');
     }
 
-    shouldComponentUpdate(props) {
-        //console.log(props.type + '---------shouldComponentUpdate--------------');
+    shouldComponentUpdate() {
         return this._render;
     }
 
-    componentDidUpdate(props) {
-        //console.log(this.props.type + '---------componentDidUpdate--------------');
+    componentDidUpdate() {
         this.picker.reLayout(this.pIdx), this.pIdx = null;
     }
 
@@ -38,15 +35,15 @@ class Picker extends Component {
         this.picker.destroy();
     }
 
-    render(prop, state) {
-        let pList = prop.pList || [];
+    render() {
+        let pList = this.props.pList || [];
         return (
             <div className="picker">
                 <div className="picker-inner">
                     <div className="picker-rule"/>
                     <ul className="picker-list">
                         {
-                            pList.map(item=><li>{item.txt == null ? item : item.txt}</li>)
+                            pList.map(item => <li>{item.txt == null ? item : item.txt}</li>)
                         }
                     </ul>
                 </div>
@@ -54,5 +51,4 @@ class Picker extends Component {
         )
     }
 }
-export default Picker;
 

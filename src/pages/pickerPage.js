@@ -15,7 +15,7 @@ import '../style/less/index.less'
 /*
  * 组件定义, 通过继承Component实现
  * */
-class pickerPage extends Component {
+export default class pickerPage extends Component {
     constructor(props) {
         super(props);
         this.pkChange = this.pkChange.bind(this);
@@ -55,11 +55,8 @@ class pickerPage extends Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     datePopPicker(type) {
-        $popPicker.date({type: type}, select=> {
+        $popPicker.date({type: type}, select => {
             $popUp.alert({
                 title: '您选择的',
                 content: getSelect(select, '-', 'txt')
@@ -68,7 +65,7 @@ class pickerPage extends Component {
     }
 
     linkagePopPicker(city) {
-        $popPicker.show(city, null, select=> {
+        $popPicker.show(city, null, select => {
             $popUp.alert({
                 title: '您选择的',
                 content: getSelect(select, '-', 'txt')
@@ -98,12 +95,13 @@ class pickerPage extends Component {
         })
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let options = {type: 'date'}, options2 = {type: ''};
         return (
             <Page option={state.option}>
                 {
-                    state.dateBtn.map(item=><button onTap={item.tap}>{item.text}</button>)
+                    state.dateBtn.map(item => <button onTap={item.tap}>{item.text}</button>)
                 }
                 <h2>普通的picker:{state.val}</h2>
                 <Picker pList={state.pList} change={this.pkChange}
@@ -129,5 +127,3 @@ function getSelect(select, prefix, key) {
     });
     return html.join(prefix);
 }
-
-export default pickerPage

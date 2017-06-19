@@ -27,7 +27,8 @@ class loadingPage extends Component {
         });
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let btnList = [
             'ios', 'ios-small', 'bubbles', 'circles', 'crescent', 'dots', 'lines', 'ripple', 'spiral',
             '<i class="icon-font icon-loading1"></i>加载中',

@@ -40,8 +40,9 @@ export default class SimplePwd extends Component {
         nextProps.clear && this.setState({password: ''});
     }
 
-    render(props, state) {
-        let pwdLength = state.password.length,
+    render() {
+        let {props, state} = this,
+            pwdLength = state.password.length,
             liList = [], length = props.len || 6,
             className = ['simple-pwd'];
         props.className && className.push(props.className);
@@ -114,8 +115,9 @@ export class Password extends Component {
             })
     }
 
-    render(props, state) {
-        let option = props.options || {},
+    render() {
+        let {props, state} = this,
+            option = props.options || {},
             show = state.show || 'simple',
             className = ['pwd-group'],
             cName = show == 'simple' ? '复杂密码' : '简单密码';
@@ -124,16 +126,9 @@ export class Password extends Component {
             <div className={className.join(' ')}>
                 <h4>请输入支付密码</h4>
                 {props.children}
-                <SimplePwd len={option.len || 6}
-                           change={this.simpleChange}
-                           clear={true}/>
-                <Input label="支付密码"
-                       type="password"
-                       name="password"
-                       maxLength="16"
-                       validate={this.isEmpty}/>
-
-                <p class="corner">
+                <SimplePwd len={option.len || 6} change={this.simpleChange} clear={true}/>
+                <Input label="支付密码" type="password" name="password" maxLength="16" validate={this.isEmpty}/>
+                <p className="corner">
                     {
                         option.noChange ? '' : <a onTap={this.change}>{cName}</a>
                     }

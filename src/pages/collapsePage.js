@@ -18,7 +18,8 @@ export default class collapsePage extends Component {
         }
     }
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 <h3>常规</h3>

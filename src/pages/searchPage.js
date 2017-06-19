@@ -56,7 +56,8 @@ export default class searchPage extends Component {
         console.log(value);
     }
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 <button onTap={this.modelClick0}>默认model搜索</button>

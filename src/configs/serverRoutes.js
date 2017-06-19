@@ -25,23 +25,11 @@ import { extend } from '../../plugin/common/service/common'
  *    ]
  *  }
  */
-const rootRoute = [
-    require('../routes/indexRouter'),
-    require('../routes/dialogRouter'),
-    require('../routes/loadingRouter'),
-    require('../routes/pickerRouter'),
-    require('../routes/payPwdRouter'),
-    require('../routes/scrollRouter'),
-    require('../routes/nativeRouter'),
-    require('../routes/formRouter'),
-    require('../routes/checkRouter'),
-    require('../routes/iconRouter'),
-    require('../routes/progressRouter'),
-    require('../routes/collapseRouter'),
-    require('../routes/tabRouter'),
-    require('../routes/searchRouter'),
-    require('../routes/scrollDemoRouter')
-];
+const rootRoute = [{
+    path: '/',//路径定义
+    component: require('../pages/indexPage').default,
+    childRoutes: []
+}];
 export default createRoutes(rootRoute.map(item => {
     item.onEnter = function () {
         //console.log('enter ----', arguments[0])

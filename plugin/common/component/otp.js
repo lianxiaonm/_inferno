@@ -11,7 +11,7 @@ import log  from '../service/log'
 
 import '../less/form.less'
 
-class Otp extends Component {
+export default class Otp extends Component {
     constructor(props) {
         super(props);
         let self = this;
@@ -115,8 +115,9 @@ class Otp extends Component {
         }) : self.props.submit && self.props.submit(store);
     }
 
-    render(props, state) {
-        let store = this.vStore;
+    render() {
+        let {state} = this,
+            store = this.vStore;
         return <Form submit={this.submit} btnTxt="提交">
             {
                 state.picSrc ? state.special.map(item => {
@@ -151,7 +152,6 @@ class Otp extends Component {
         </Form>
     }
 }
-export default Otp;
 
 export function otpModal(opts) {
     $popUp.show({

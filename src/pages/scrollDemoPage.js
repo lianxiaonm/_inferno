@@ -55,7 +55,8 @@ export default class scrollDemoPage extends Component {
         });
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let list = state.list;
         return (
             <Page option={state.option}

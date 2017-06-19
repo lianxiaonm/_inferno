@@ -53,7 +53,8 @@ export default class ProgressPage extends Component {
         clearInterval(this._timer);
     }
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 {

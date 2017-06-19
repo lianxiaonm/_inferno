@@ -28,7 +28,7 @@ function createLinkPicker(list, pickerMap, select) {
     return isArray(children) ? createLinkPicker(children, pickerMap, select) : pickerMap;
 }
 
-class LinkagePicker extends Component {
+export default class LinkagePicker extends Component {
     constructor(props) {
         super(props);
         this.pkChange = this.pkChange.bind(this);
@@ -71,8 +71,8 @@ class LinkagePicker extends Component {
         this._render = false, upChange.call(this, this.select);
     }
 
-    render(prop, state) {
-        let dataMap = state.pMap;
+    render() {
+        let dataMap = this.state.pMap;
         return (
             <div className="picker-body">
                 {
@@ -84,5 +84,4 @@ class LinkagePicker extends Component {
         )
     }
 }
-export default LinkagePicker;
 

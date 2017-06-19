@@ -1,4 +1,4 @@
-import { isFunction, isString, isArray } from 'inferno-shared'
+import { isFunction, isString, isArray, isBrowser } from 'inferno-shared'
 import { noop, fromJson } from '../service/common'
 import $q from '../service/$q'
 
@@ -104,7 +104,7 @@ export default function (name, argsList, type, only) {
     only && yqbNative.delDefer(name);
     var id = only ? name : $id++,
         defer = defers[id] = $q.defer();
-    if (!yqbNative.compareVer(nativeMs[name])) {
+    if (!isBrowser || !yqbNative.compareVer(nativeMs[name])) {
         delete defers[id];
         defer.reject('js 方法不存在或版本不支持');
     } else if (!universalJsFun && t <= timeOut) {

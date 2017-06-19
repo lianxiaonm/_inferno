@@ -18,7 +18,8 @@ export default class tabPage extends Component {
         }
     }
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 <h3>常规</h3>

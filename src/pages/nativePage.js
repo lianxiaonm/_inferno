@@ -16,7 +16,8 @@ class loadingPage extends Component {
         }
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let btnList = [
             'getDeviceInfo'
         ];

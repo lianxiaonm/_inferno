@@ -11,7 +11,7 @@ import '../less/form.less'
 
 export const skipValidate = valueFn({flag: true});
 
-class Input extends Component {
+export default class Input extends Component {
     constructor(props) {
         super(props);
         let self = this;
@@ -64,8 +64,9 @@ class Input extends Component {
         });
     }
 
-    render(props, state) {
-        let label = props.label || '',
+    render() {
+        let {props, state} = this,
+            label = props.label || '',
             className = ['form-input'];
         props.className && className.push(props.className);
         props.children && className.push('small');
@@ -74,9 +75,7 @@ class Input extends Component {
         state.isFocus && className.push('focus');
         return (
             <div className={className.join(' ')}>
-                {
-                    label ? <label>{label}</label> : ''
-                }
+                {label ? <label>{label}</label> : ''}
                 <input type={props.type || 'text'}
                        value={state.value}
                        autocomplete="off"
@@ -97,7 +96,6 @@ class Input extends Component {
         )
     }
 }
-export default Input;
 
 export function isEmpty(label, value) {
     let isEmpty = !!trim(value || '').length;
@@ -161,7 +159,7 @@ export class Form extends Component {
         }
         if (self.vInvalid === invalid) return;
         self.vInvalid = invalid;
-        if (isInit) this.btnNode.disabled = !invalid
+        if (isInit) this.btnNode.disabled = !invalid;
         else {
             self.structure(), this.btnNode.disabled = !invalid;
         }
@@ -187,9 +185,9 @@ export class Form extends Component {
         this.structure(true, nextProps);
     }
 
-
-    render(props, state) {
-        let className = ['input-group'];
+    render() {
+        let {props} = this,
+            className = ['input-group'];
         props.className && className.push(props.className);
         return <div className={className.join(' ')} onKeyDown={this.keyDown}>
             {props.children}

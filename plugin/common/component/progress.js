@@ -61,8 +61,9 @@ export default class Progress extends Component {
         equals(this.props, nextProps) || this.progress(nextProps);
     }
 
-    render(props, state) {
-        let className = props.type == 'circle' ? ['progress-circle'] : ['progress-bar'],
+    render() {
+        let {props, state} = this,
+            className = props.type == 'circle' ? ['progress-circle'] : ['progress-bar'],
             timer = (state.time || 0) + 'ms';              //时间
         props.className && className.push(props.className);
         return state.delete ? '' : props.type == 'circle' ? (

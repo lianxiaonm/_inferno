@@ -83,7 +83,7 @@ class DatePicker extends Component {
 
     pkChange(idx, obj, type) {
         this.select[type] = obj;
-        let select = this.select, props = this.props;
+        let select = this.select;
         this.state.pMap.forEach(pk => {
             if (pk.type == type) pk.idx = idx;
             if (pk.type == 'day' && (type == 'month' || type == 'year')) {
@@ -110,16 +110,14 @@ class DatePicker extends Component {
         this._render = false, upChange.call(this, this.select);
     }
 
-    render(props, state) {
-        let dataMap = state.pMap;
+    render() {
+        let dataMap = this.state.pMap;
         return (
             <div className="picker-body">
                 {
-                    dataMap.map(item => {
-                        return <Picker
-                            pList={item.list} pIdx={item.idx}
-                            type={item.type} change={this.pkChange}/>
-                    })
+                    dataMap.map(item => <Picker
+                        pList={item.list} pIdx={item.idx}
+                        type={item.type} change={this.pkChange}/>)
                 }
             </div>
         )

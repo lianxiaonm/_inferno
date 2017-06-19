@@ -3,7 +3,7 @@ import Inferno from 'inferno';
 import Component from 'inferno-component';
 
 import Page from '../../plugin/common/component/page'
-import CheckBox,{ dialogCkBox,modelCkBox } from '../../plugin/common/component/checkBox'
+import CheckBox, { dialogCkBox, modelCkBox } from '../../plugin/common/component/checkBox'
 import $log from '../../plugin/common/service/log'
 
 import '../style/less/index.less'
@@ -41,7 +41,7 @@ class indexPage extends Component {
                 {type: 'single', values: values, title: '单选V1'},
                 {type: 'single', values: values, className: 'lft', title: '单选V1左'},
                 {type: 'single', values: values, className: 'v1', title: '单选'},
-                {type: 'single', values: values, className: 'v1 lft', title: '单选V1左'},
+                {type: 'single', values: values, className: 'v1 lft', title: '单选V1左'}
             ],
             checkList: {
                 multiple: [0, 1, 2],
@@ -64,20 +64,21 @@ class indexPage extends Component {
         this.setState({checkList: checkList});
     }
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 {
-                    state.checkBoxList.map(item=>
-                            <div>
-                                <h3>{item.title}</h3>
-                                <CheckBox
-                                    type={item.type}
-                                    values={item.values}
-                                    checkList={state.checkList[item.type]}
-                                    checkFn={this.check}
-                                    className={item.className}/>
-                            </div>
+                    state.checkBoxList.map(item =>
+                        <div>
+                            <h3>{item.title}</h3>
+                            <CheckBox
+                                type={item.type}
+                                values={item.values}
+                                checkList={state.checkList[item.type]}
+                                checkFn={this.check}
+                                className={item.className}/>
+                        </div>
                     )
                 }
                 <h3>dialog式</h3>

@@ -37,9 +37,6 @@ class dialogPage extends Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     alert(noTitle) {
         $popUp.alert({
             title: noTitle ? '' : 'alert',
@@ -64,7 +61,8 @@ class dialogPage extends Component {
 
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let btnList = state.btnList || [];
         return (
             <Page option={state.option}>

@@ -29,8 +29,9 @@ export default class Collapse extends Component {
         });
     }
 
-    render(props, state) {
-        let className = ['collapse', 'item-view'];
+    render() {
+        let {props, state} = this,
+            className = ['collapse', 'item-view'];
         props.className && className.push(props.className);
         return (
             <ul className={className.join(' ')}>

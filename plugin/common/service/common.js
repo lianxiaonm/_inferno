@@ -1,4 +1,4 @@
-import { isFunction, isUndefined, isObject, isString, isArray, isNumber } from 'inferno-shared'
+import { isFunction, isUndefined, isObject, isString, isArray, isNumber, isBrowser } from 'inferno-shared'
 
 let toString = Object.prototype.toString,
     getProto = Object.getPrototypeOf,
@@ -237,6 +237,7 @@ export function safeDECURI(str) {
         return str;
     }
 }
+export const browser = isBrowser;
 export function noop() {}
 export function stop(ev) {ev.stopPropagation()}
 export const enc_URI = encodeURIComponent || noop;

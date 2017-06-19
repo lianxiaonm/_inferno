@@ -26,7 +26,6 @@ class Scroll extends Component {
         self.initEvent = self.initEvent.bind(self);
         self.drag = self.drag.bind(self);
         self.dragend = self.dragend.bind(self);
-        self.stopPull = self.stopPull.bind(self);
     }
 
     componentDidMount() {
@@ -79,11 +78,10 @@ class Scroll extends Component {
         }
     }
 
-    stopPull(type) {
-    }
 
-    render(props) {
-        let className = ['scroll-wrapper'];
+    render() {
+        let {props} = this,
+            className = ['scroll-wrapper'];
         props.className && className.push(props.className);
         return (
             <div className={className.join(' ')}>

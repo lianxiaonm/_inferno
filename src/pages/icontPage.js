@@ -111,7 +111,8 @@ export default class IconPage extends Component {
         }
     }
 
-    render(props, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 <ul className="m-row font-page">

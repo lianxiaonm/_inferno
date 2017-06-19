@@ -101,8 +101,9 @@ export default class ShareBox extends Component {
         model.hide(stop, event);
     }
 
-    render(props, state) {
-        let className = ['share-box'];
+    render() {
+        let {state} = this,
+            className = ['share-box'];
         state.screen && className.push(state.screen);
         return (
             <div className={className.join(' ')}>
@@ -123,6 +124,6 @@ export default class ShareBox extends Component {
     }
 
 }
-export function modelShareBox(options, otherOpt) {
+export function modelShareBox(options) {
     model(<ShareBox options={options}/>)
 }

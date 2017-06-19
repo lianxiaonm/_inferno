@@ -34,15 +34,16 @@ export default class CheckBox extends Component {
         equals(nextProps, this.props) || this.setState(this.initIdx(nextProps));
     }
 
-    render(props, state) {
-        let type = props.type || 'single',//single 单选， multiple 多选
+    render() {
+        let {props, state} = this,
+            type = props.type || 'single',//single 单选， multiple 多选
             className = ['item-view'].concat(type == 'single' ? 'single' : 'multiple'),
             valList = props.values || [];
         props.className && className.push(props.className);
         return (
             valList.length ? <ul className={className.join(' ')}>
                 {
-                    valList.map((item, idx)=> {
+                    valList.map((item, idx) => {
                         let tapClick = item.disabled ? stop : this.tap.bind(this, type, item, idx),
                             className = ['item-list'];
                         item.disabled && className.push('disabled');
@@ -73,7 +74,7 @@ export function dialogCkBox(options) {
                           className={options.className}
                           checkList={options.checkList}
                           checkFn={checkBoxFn}/>
-                <button onTap={tapBtn.bind(null,options.checkFn)}>确定</button>
+                <button onTap={tapBtn.bind(null, options.checkFn)}>确定</button>
             </MadePop>
         )
     })
@@ -89,7 +90,7 @@ export function modelCkBox(options, opts) {
         <div className="pop-check">
             <div className="pop-check-title">
                 {options.title || '请选择'}
-                <em className="icon-font" onTap={tapBtn1.bind(null,options.checkFn)}>&#xe645;</em>
+                <em className="icon-font" onTap={tapBtn1.bind(null, options.checkFn)}>&#xe645;</em>
             </div>
             <CheckBox type={options.type}
                       values={options.values}

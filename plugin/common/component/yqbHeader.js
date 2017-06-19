@@ -54,7 +54,7 @@ let callString = yqbNative.callString,
     appVer = yqbNative.getAppVersion(),
     support = yqbNative.compareVer('4.0.0');
 
-class YqbHeader extends Component {
+export default class YqbHeader extends Component {
     constructor(props) {
         super(props);
         this.tapClick = this.tapClick.bind(this);
@@ -117,8 +117,9 @@ class YqbHeader extends Component {
         equals(nextProps, this.props) || this.injectNative(nextProps);
     }
 
-    render(props, state) {
-        let useH5Header = state.useH5Header,
+    render() {
+        let {state} = this,
+            useH5Header = state.useH5Header,
             option = state.option || {},
             left = option.left,
             title = option.title,
@@ -127,24 +128,18 @@ class YqbHeader extends Component {
         return useH5Header ? (
             <header className="yqb-header">
                 <div class="head-left">
-                    {
-                        left.show ? <i onTap={this.goBackHandler} className="icon-font">&#xe679;</i> : ''
-                    }
-                    {
-                        left.close ? <i onTap={closeWebView} className="icon-font">&#xe646;</i> : ''
-                    }
+                    {left.show ? <i onTap={this.goBackHandler} className="icon-font">&#xe679;</i> : ''}
+                    {left.close ? <i onTap={closeWebView} className="icon-font">&#xe646;</i> : ''}
                 </div>
                 <h3 className={`head-title ${tabState}`}
                     onTap={this.tapClick}>{title.value || '默认标题'}</h3>
-
                 <div className="head-right">
                     {
                         right.map(item => {
                             let text = item.OnlyTitle ? item.textValue : '',
                                 clazz = item.isOnlyImage ? 'icon' : '',
                                 style = item.bgStyleTmpl || '';
-                            return <i onTap={item.onClickHandler}
-                                      style={style} className={clazz}>{text}</i>;
+                            return <i onTap={item.onClickHandler} style={style} className={clazz}>{text}</i>;
                         })
                     }
                 </div>
@@ -152,5 +147,4 @@ class YqbHeader extends Component {
         ) : ''
     }
 }
-export default YqbHeader;
 

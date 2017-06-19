@@ -3,8 +3,8 @@ import Inferno from 'inferno';
 import Component from 'inferno-component';
 
 import Page from '../../plugin/common/component/page'
-import Input,{ Form } from  '../../plugin/common/component/input'
-import Otp,{ otpModal } from '../../plugin/common/component/otp'
+import Input, { Form } from  '../../plugin/common/component/input'
+import Otp, { otpModal } from '../../plugin/common/component/otp'
 
 import { $popUp } from '../../plugin/common/service/ionic-lite'
 import log from '../../plugin/common/service/log'
@@ -67,12 +67,13 @@ class formPage extends Component {
     }
 
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         return (
             <Page option={state.option}>
                 <Form submit={this.submit}>
                     {
-                        state.inputs.map(item=> <Input
+                        state.inputs.map(item => <Input
                             label={item.label}
                             name={item.name}
                             className={item.className}

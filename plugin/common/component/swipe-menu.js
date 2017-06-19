@@ -80,8 +80,9 @@ export default class SwipeMenu extends Component {
         this.translate(event.target, this.deltaX, true, this.deltaX < 0);
     }*/
 
-    render(props, state) {
-        let className = ['swipe-menu'],
+    render() {
+        let {props} = this,
+            className = ['swipe-menu'],
             btnList = props.btnList || [];
         btnList.length || className.pop();
         props.className && className.push(props.className);

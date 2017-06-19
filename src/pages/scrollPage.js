@@ -63,7 +63,8 @@ class scrollPage extends Component {
     componentDidMount() {
     }
 
-    render(prop, state) {
+    render() {
+        const {state} = this;
         let list = state.list;
         return (
             <Page option={state.option}

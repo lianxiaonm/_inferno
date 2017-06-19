@@ -1,7 +1,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 
-import { equals } from '../service/common'
+import { equals, browser } from '../service/common'
 import { $popUp } from '../service/ionic-lite'
 
 import '../less/ionic.less'
@@ -14,8 +14,9 @@ export class baseComponent extends Component {
 }
 
 export class Popup extends baseComponent {
-    render(props) {
-        let btns = props.btns || [],
+    render() {
+        let {props} = this,
+            btns = props.btns || [],
             children = props.children;
         return (
             <div className="popup">
@@ -56,8 +57,9 @@ export class MadePop extends Component {
         this.close = $popUp.hide.bind($popUp, null);
     }
 
-    render(props, state) {
-        let className = ['made-body'];
+    render() {
+        let {props} = this,
+            className = ['made-body'];
         props.className && className.push(props.className);
         return (
             <div className={className.join(' ')}>
@@ -71,13 +73,15 @@ export class MadePop extends Component {
 }
 
 export class ActionSheet extends baseComponent {
+
     tapClick(item, idx, event) {
         this.props.tap && this.props.tap(arguments);
         return event.stopPropagation();
     }
 
-    render(prop, state) {
-        let btnList = prop.btnList || [];
+    render() {
+        let {props} = this,
+            btnList = props.btnList || [];
         return (
             <div className="action-sheet">
                 <ul className="item-view">
@@ -119,8 +123,8 @@ export class Loading extends baseComponent {
         }
     }
 
-    render(props) {
-        this.init(props);
+    render() {
+        browser && this.init(this.props);
         return <div className={(this._className || []).join(' ')}
                     dangerouslySetInnerHTML={{__html: this._html}}/>
     }
