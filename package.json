@@ -30,6 +30,8 @@
     "inferno-redux": "^1.5.5",
     "inferno-router": "^1.5.5",
     "inferno-server": "^1.5.5",
+    "inferno-shared": "^1.5.1",
+    "inferno-transition-group": "^1.1.1",
     "json-loader": "^0.5.4",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",

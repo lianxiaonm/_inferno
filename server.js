@@ -14,13 +14,11 @@ import './plugin/common/framework'
 var https = require('http'),
     fs = require('fs');
 var layout = fs.readFileSync('../index.html', 'utf8')
-function Html({children}) {
+function App({children}) {
     return (<div id="app">{children}</div>);
 }
 
 const app = express();
-
-var mime = ["htm", "html", "jpeg", "jpg", "png", "gif", "js", "css", "woff", "otf", "ttf", "eot", "svg"];
 
 app.use((req, res) => {
     if (/\.ico$/.test(req.originalUrl)) return res.send('');
@@ -30,7 +28,7 @@ app.use((req, res) => {
     if (renderProps.redirect) {
         return res.redirect(renderProps.redirect)
     }
-    const content = (<Html><RouterContext {...renderProps}/></Html>);
+    const content = (<App><RouterContext {...renderProps}/></App>);
     res.send(layout.replace('<div id="app"></div>', renderToString(content)));
 });
 
