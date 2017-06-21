@@ -20,11 +20,11 @@
         getStyles = Class.getStyles,
         parseTranslateMatrix = Class.parseTranslateMatrix,
         quadratic = {style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'},
-        circular = {style: 'cubic-bezier(0.1, 0.57, 0.1, 1)'},
-        //circular = {style: 'cubic-bezier(0.22, 0.61, 0.35, 1)'},
+        //circular = {style: 'cubic-bezier(0.1, 0.57, 0.1, 1)'},
+        circular = {style: 'cubic-bezier(0.22, 0.61, 0.35, 1)'},
         outCirc = {style: 'cubic-bezier(0.075, 0.82, 0.165, 1)'},
-        //outCubic = {style: 'cubic-bezier(0.165, 0.84, 0.44, 1)'},
-        outCubic = {style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'};
+        outCubic = {style: 'cubic-bezier(0.165, 0.84, 0.44, 1)'};
+        //outCubic = {style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'};
     var lockThreshold = 5;
     window.IScroll = Class.extend({
         init: function (element, options) {

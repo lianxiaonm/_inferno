@@ -2,18 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTxtPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const infernoPath = path.resolve(__dirname, 'plugin/inferno/index.js');
 const infernoSharedPath = path.resolve(__dirname, 'plugin/inferno-shared/index.js');
 const node_modules = path.resolve(__dirname, 'node_modules');
-//const infernoComponentPath = path.resolve(node_modules, 'inferno-component/index.js');
-//const infernoCreateElementPath = path.resolve(node_modules, 'inferno-create-element/index.js');
-//const infernoHyperscriptPath = path.resolve(node_modules, 'inferno-hyperscript/index.js');
-//const infernoReduxPath = path.resolve(node_modules, 'inferno-redux/index.js');
-//const reduxPath = path.resolve(node_modules, 'redux/lib/index.js');
-//const historyPath = path.resolve(node_modules, 'history/lib/index.js');
-
-//const lessExtractor = new ExtractTxtPlugin('*/[name].less', {allChunks: true});
 
 module.exports = {
     entry: {
@@ -29,7 +22,6 @@ module.exports = {
             'inferno-router',
             'history/createHashHistory'
         ],
-        //framework: ['./plugin/common/framework.js'],
         app: ['./src/index.js'],
         plugin: [
             './plugin/ionic-svg.js',
@@ -40,20 +32,14 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'deployed'),
-        filename: '[name].js',
-        chunkFilename: "[name].js",
+        filename: '[name].[chunkHash:8].js',
+        chunkFilename: "[name].[chunkHash:8].js",
         publicPath: '/deployed/'
     },
     resolve: {
         alias: {
             'inferno': infernoPath,
             'inferno-shared': infernoSharedPath,
-            //'inferno-component': infernoComponentPath,
-            //'inferno-create-element': infernoCreateElementPath,
-            //'inferno-hyperscript': infernoHyperscriptPath,
-            //'inferno-redux': infernoReduxPath,
-            //'redux': reduxPath,
-            //'history': historyPath,
             extensions: ['', '.js', '.jsx']
         }
     },
@@ -88,27 +74,27 @@ module.exports = {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-        //new webpack.DllReferencePlugin({
-        //    context: __dirname,
-        //    manifest: require('./dll/plugin-manifest.json'),
-        //}),
-        //new webpack.DllReferencePlugin({
-        //    context: __dirname,
-        //    manifest: require('./dll/vendor-manifest.json'),
-        //}),
         //提取共有代码
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'vendor.js',
+            filename: 'vendor.[chunkHash:8].js',
             chunks: ['vendor', 'app']
         }),
         //lessExtractor
-        new ExtractTxtPlugin("[name].css", {
+        new ExtractTxtPlugin("[name].[chunkHash:8].css", {
             allChunks: true
         }),
-        //new htmlWebpackPlugin()
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false}
-        })
+        new htmlWebpackPlugin({
+            template: './template.html',
+            filename: '../index.html',
+            inject: 'body'
+        }),
+        new CleanWebpackPlugin(['deployed/*'], {
+            root: __dirname,
+            dry: false
+        }),
+        //new webpack.optimize.UglifyJsPlugin({
+        //    compress: {warnings: false}
+        //})
     ]
 }
