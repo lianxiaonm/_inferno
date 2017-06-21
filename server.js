@@ -12,6 +12,7 @@ import routes from './src/configs/serverRoutes';
 import './plugin/common/framework'
 
 var https = require('http'),
+    port = 30002,
     fs = require('fs');
 var layout = fs.readFileSync('../index.html', 'utf8')
 function App({children}) {
@@ -32,8 +33,6 @@ app.use((req, res) => {
     res.send(layout.replace('<div id="app"></div>', renderToString(content)));
 });
 
-https.createServer(app).listen(30001, function () {
-    console.log(
-        'node web server connection successfully Express server listening on port 30001 !'
-    );
+https.createServer(app).listen(port, function () {
+    console.log(`node web server connection successfully Express server listening on port ${port} !`);
 });
