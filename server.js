@@ -14,7 +14,7 @@ import './plugin/common/framework'
 var https = require('http'),
     port = 30002,
     fs = require('fs');
-var layout = fs.readFileSync('../index.html', 'utf8')
+//var layout = fs.readFileSync('../index.html', 'utf8')
 function App({children}) {
     return (<div id="app">{children}</div>);
 }
@@ -22,14 +22,14 @@ function App({children}) {
 const app = express();
 
 app.use((req, res) => {
-    if (/\.ico$/.test(req.originalUrl)) return res.send('');
-    else if (/.(htm|html|jpeg|jpg|png|gif|js|css|woff|otf|ttf|eot|svg)$/.test(req.originalUrl))
+    if (/.(htm|html|jpeg|jpg|png|gif|js|css|woff|otf|ttf|eot|svg|ico)$/.test(req.originalUrl))
         return res.redirect('http://127.0.0.1:20003' + req.originalUrl);
     const renderProps = match(routes, req.originalUrl);
     if (renderProps.redirect) {
         return res.redirect(renderProps.redirect)
     }
     const content = (<App><RouterContext {...renderProps}/></App>);
+    var layout = fs.readFileSync('../index.html', 'utf8');
     res.send(layout.replace('<div id="app"></div>', renderToString(content)));
 });
 

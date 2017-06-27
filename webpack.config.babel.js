@@ -1,16 +1,7 @@
 import webpack from 'webpack';
-import fs from 'fs';
 import path from 'path';
 import ExtractTxtPlugin from 'extract-text-webpack-plugin';
-
-let nodeModules = {};
-fs.readdirSync('node_modules')
-    .filter((x) => {
-        return ['.bin'].indexOf(x) === -1;
-    })
-    .forEach((mod) => {
-        nodeModules[mod] = 'commonjs ' + mod;
-    });
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const infernoPath = path.resolve(__dirname, 'plugin/inferno/index.js');
 const infernoSharedPath = path.resolve(__dirname, 'plugin/inferno-shared/index.js');
@@ -18,19 +9,7 @@ const infernoSharedPath = path.resolve(__dirname, 'plugin/inferno-shared/index.j
 export default {
     cache: true,
     entry: {
-        /*vendor: [
-            'inferno',
-            'inferno-shared',
-            //---------------------
-            'inferno-component',
-            'inferno-server',
-            'redux',
-            'redux-thunk',
-            'inferno-redux',
-            'inferno-router',
-            'history/createHashHistory'
-        ],*/
-        server: ['./server.js'],
+        server: ['./server.js']
     },
     output: {
         path: path.resolve(__dirname, 'node_path'),
@@ -51,15 +30,12 @@ export default {
         __dirname: false
     },
     target: 'node',
-    //externals: nodeModules,
     module: {
         loaders: [
             {
                 test: /\.(css|less)$/,
-                //loader: lessExtractor.extract(['css', 'less'])
                 loader: ExtractTxtPlugin.extract("style", "css!less", {publicPath: "/dist"})
-                //loader:'style!css!less'
-            }, //2.0 loader -> use
+            },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -67,7 +43,7 @@ export default {
                 include: __dirname,
                 query: {
                     plugins: ['transform-runtime'],
-                    presets: ['es2015', 'stage-0'],
+                    presets: ['es2015', 'stage-0']
                 }
             },
             {
@@ -81,7 +57,7 @@ export default {
             {
                 test: /\.(svg|ttf|woff)$/,
                 loader: 'url?limit=4000&name=/fonts/[name].[ext]'
-            },
+            }
         ]
     },
     plugins: [
@@ -99,6 +75,10 @@ export default {
         new ExtractTxtPlugin("[name].css", {
             allChunks: true
         }),
+        new CleanWebpackPlugin(['node_path/*'], {
+            root: __dirname,
+            dry: false
+        })
         //new webpack.optimize.UglifyJsPlugin({
         //    compress: {warnings: false}
         //})

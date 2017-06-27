@@ -26,7 +26,7 @@ extend(Child.prototype, {
     },
     loadItem: function (page) {
         return this.jsonpRequest('https://ju.taobao.com/json/tg/ajaxGetItemsV2.json?callback=JSON_CALLBACK', {
-            page: page, psize: 10, type: 0, frontCatId: null
+            page: page, psize: 50, type: 0, frontCatId: null
         })
     },
     tbKill: function (time) {
