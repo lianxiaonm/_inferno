@@ -10,7 +10,7 @@ import '../style/less/index.less'
 /*
  * 组件定义, 通过继承Component实现
  * */
-class loadingPage extends Component {
+export default class loadingPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,5 +45,3 @@ class loadingPage extends Component {
         )
     }
 }
-
-export default loadingPage

@@ -13,7 +13,7 @@ import '../style/less/index.less'
 /*
  * 组件定义, 通过继承Component实现
  * */
-class payPwdPage extends Component {
+export default class payPwdPage extends Component {
     constructor(props) {
         super(props);
         let options = {show: 'complex'},
@@ -98,5 +98,3 @@ class payPwdPage extends Component {
         )
     }
 }
-
-export default payPwdPage

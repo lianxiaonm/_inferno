@@ -16,7 +16,7 @@ import '../style/less/index.less'
 /*
  * 组件定义, 通过继承Component实现
  * */
-class formPage extends Component {
+export default class formPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -94,7 +94,3 @@ class formPage extends Component {
         )
     }
 }
-
-export
-default
-formPage

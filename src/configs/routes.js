@@ -40,7 +40,8 @@ const rootRoute = [
     require('../routes/collapseRouter'),
     require('../routes/tabRouter'),
     require('../routes/searchRouter'),
-    require('../routes/scrollDemoRouter')
+    require('../routes/scrollDemoRouter'),
+    require('../routes/rateRouter')
 ];
 export default createRoutes(rootRoute.map(item => {
     item.onEnter = function () {

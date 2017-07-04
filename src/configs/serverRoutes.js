@@ -63,6 +63,10 @@ const rootRoute = [
     {
         path: '/tab',//路径定义
         component: require('../pages/tabPage').default
+    },
+    {
+        path: '/rate',//路径定义
+        component: require('../pages/ratePage').default
     }
 ];
 export default createRoutes(rootRoute.map(item => {

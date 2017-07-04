@@ -15,7 +15,7 @@ import '../style/less/index.less'
  * 组件定义, 通过继承Component实现
  * */
 //connect(['englishStore', 'frenchStore'])
-class indexPage extends Component {
+export default class indexPage extends Component {
     constructor(props) {
         super(props);
         this.state.option = {
@@ -46,7 +46,8 @@ class indexPage extends Component {
             {url: '/collapse', text: '折叠面板'},
             {url: '/tab', text: 'tabs'},
             {url: '/search', text: '搜索页'},
-            {url: '/scrollDemo', text: '仿聚划算'}
+            {url: '/scrollDemo', text: '仿聚划算'},
+            {url: '/rate', text: '评分组件(雏形)'},
         ];
         return (
             <Page option={state.option}>
@@ -61,5 +62,3 @@ class indexPage extends Component {
         )
     }
 }
-
-export default indexPage

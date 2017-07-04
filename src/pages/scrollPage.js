@@ -16,7 +16,7 @@ import '../style/less/index.less'
 /*
  * 组件定义, 通过继承Component实现
  * */
-class scrollPage extends Component {
+export default class scrollPage extends Component {
     constructor(props) {
         super(props);
         this.insetList = this.insetList.bind(this);
@@ -82,5 +82,3 @@ class scrollPage extends Component {
         )
     }
 }
-
-export default scrollPage

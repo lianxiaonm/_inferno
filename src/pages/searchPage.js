@@ -15,12 +15,12 @@ export default class searchPage extends Component {
         super(props);
         this.query = this.query.bind(this);
         this.search = this.search.bind(this);
-        this.modelClick0 = this.modelClick.bind(this, {
+        this.modelClick0 = modelSearch.bind(this, {
             query: this.query,
             placeholder: '卡布奇诺',
             search: this.search
         });
-        this.modelClick1 = this.modelClick.bind(this, {
+        this.modelClick1 = modelSearch.bind(this, {
             className: 'sch-tMall',
             query: this.query,
             placeholder: 'tMall',
@@ -36,10 +36,6 @@ export default class searchPage extends Component {
                 hot: []
             }
         }
-    }
-
-    modelClick(options) {
-        modelSearch(options);
     }
 
     query(value) {

@@ -1,0 +1,46 @@
+@import (reference) "mixins.less";
+//
+
+.rate-body {
+    .px2rem(padding, 12);
+    > i {
+        font-style: normal; display: inline-block; position: relative;
+        .px2auto-multi(margin, 0, 8);
+        &:before, &:after { font-family: 'iconfont'; .px2rem(font-size, 44); }
+        &:before { content: '\E64C'; color: #CCC; }
+        &.on:before { content: '\E64B'; color: #F7BA2A; }
+        &.half:after {
+            content: '\E64B'; color: #F7BA2A;
+            position: absolute; left: 0; top: 0; width: 50%;
+            overflow: hidden;
+        }
+    }
+    > em {
+        font-style: normal; color: #F90; .px2rem(font-size, 32);
+        position: relative; .px2rem(top,-2); .px2rem(left,10);
+    }
+    &.disabled >i {
+        &:before { content: '\E64B'; color: #EEE }
+        &.on:before { color: #F7BA2A; }
+    }
+    &.heart {
+        >i {
+            &:before{content: '\E669';}
+            &.on:before{content: '\E668';}
+            &.half:after{content: '\E668';}
+        }
+        &.disabled >i {
+            :before{content: '\E668';}
+        }
+    }
+    &.smile {
+        >i {
+            &:before{content: '\E64A';}
+            &.on:before{content: '\E78D';}
+            &.half:after{content: '\E78D';}
+        }
+        &.disabled >i {
+            :before{content: '\E78D';}
+        }
+    }
+}

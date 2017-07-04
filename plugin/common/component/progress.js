@@ -52,7 +52,7 @@ export default class Progress extends Component {
         return [
             'stroke-dasharray:' + perimeter + 'px,' + perimeter + 'px',
             'stroke-dashoffset:' + (1 - percent / 100) * perimeter + 'px',
-            'transition:stroke-dashoffset ' + time + ' ease 0s, stroke ' + time + ' ease'
+            'transition:stroke-dashoffset ' + time + ', stroke ' + time
         ].join(';')
     }
 

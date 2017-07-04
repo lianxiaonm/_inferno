@@ -13,7 +13,7 @@ import '../style/less/index.less'
 /*
  * 组件定义, 通过继承Component实现
  * */
-class dialogPage extends Component {
+export default class dialogPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,5 +73,3 @@ class dialogPage extends Component {
         )
     }
 }
-
-export default dialogPage
