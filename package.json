@@ -42,7 +42,8 @@
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-zip-plugin": "^0.1.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

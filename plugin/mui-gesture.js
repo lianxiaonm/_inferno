@@ -283,7 +283,7 @@
             gesture.handle(event, touch);
         });
         session.prevTouch = touch;
-        event.type === EVENT_END && !isTouchable && each(session, function (key) {
+        event.type === EVENT_END && each(session, function (key) {
             delete session[key];
         }, true);
     };

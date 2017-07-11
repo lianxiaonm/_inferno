@@ -3,10 +3,13 @@ const path = require('path');
 const ExtractTxtPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ZipWebpackPlugin = require('webpack-zip-plugin');
 
 const infernoPath = path.resolve(__dirname, 'plugin/inferno/index.js');
 const infernoSharedPath = path.resolve(__dirname, 'plugin/inferno-shared/index.js');
 const node_modules = path.resolve(__dirname, 'node_modules');
+
+const deployPath = path.resolve(__dirname, 'deployed');
 
 module.exports = {
     entry: {
@@ -31,7 +34,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, 'deployed'),
+        path: deployPath,
         filename: '[name].[chunkHash:8].js',
         chunkFilename: "[name].[chunkHash:8].js",
         publicPath: '/deployed/'
@@ -93,6 +96,11 @@ module.exports = {
         //new webpack.optimize.UglifyJsPlugin({
         //    compress: {warnings: false}
         //}),
+        new ZipWebpackPlugin({
+            initialFile: './deployed',
+            endPath: './build_path',
+            zipName: 'client.zip'
+        }),
         new CleanWebpackPlugin(['deployed/*'], {
             root: __dirname,
             dry: false

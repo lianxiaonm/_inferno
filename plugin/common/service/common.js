@@ -96,7 +96,7 @@ export function equals(o1, o2) {
                     return equals(o1.getTime(), o2.getTime());
                 else if (t1 === '[object RegExp]')
                     return o1.toString() == o2.toString();
-                else if (t1 === '[object,Array]') {
+                else if (t1 === '[object Array]') {
                     if ((length = o1.length) == o2.length) {
                         for (key = 0; key < length; key++) {
                             if (!equals(o1[key], o2[key])) return false;

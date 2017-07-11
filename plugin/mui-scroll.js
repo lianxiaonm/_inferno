@@ -24,7 +24,7 @@
         circular = {style: 'cubic-bezier(0.22, 0.61, 0.35, 1)'},
         outCirc = {style: 'cubic-bezier(0.075, 0.82, 0.165, 1)'},
         outCubic = {style: 'cubic-bezier(0.165, 0.84, 0.44, 1)'};
-        //outCubic = {style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'};
+    //outCubic = {style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'};
     var lockThreshold = 5;
     window.IScroll = Class.extend({
         init: function (element, options) {
@@ -133,9 +133,10 @@
                     self.setTranslate(x, y);
                 trigger(scroller, 'scrollend', self);
                 e.preventDefault();
+            } else {
+                self.reLayout();
+                trigger(scroller, 'beforescrollstart', self);
             }
-            self.reLayout();
-            trigger(scroller, 'beforescrollstart', self);
         },
         _drag: function (e) {
             var self = this,
@@ -297,19 +298,21 @@
         _momentum: function (current, distance, time, lowerMargin, wrapperSize, deceleration) {
             var speed = _parseFloat(ABS(distance) / time),
                 destination, duration;
-            deceleration = deceleration == undefined ? 0.002 : deceleration;
-            destination = current + speed * (speed < 1 ? speed : speed) / deceleration * (distance < 0 ? -1 : 1);
+            speed = speed > 7 ? 7 : speed;
+            deceleration = deceleration == undefined ? 0.003 : deceleration;
+            destination = current + speed * (speed < 1 ? speed : 1) / deceleration * (distance < 0 ? -1 : 1);
             duration = speed / deceleration;
             if (destination < lowerMargin) {
                 destination = wrapperSize ? lowerMargin - (wrapperSize / 4 * (speed / 8)) : lowerMargin;
                 distance = ABS(destination - current);
                 duration = distance / speed;
             } else if (destination > 0) {
+                //destination = wrapperSize ? wrapperSize / 10 : 0;
                 destination = wrapperSize ? wrapperSize / 4 * (speed / 8) : 0;
                 distance = ABS(current) + destination;
                 duration = distance / speed;
             }
-            return {destination: ROUND(destination), duration: duration};
+            return {destination: ROUND(destination), duration: duration > 2000 ? 2000 : duration};
         },
         //--------------API-----------------
         setStopped: function (stopped) {
