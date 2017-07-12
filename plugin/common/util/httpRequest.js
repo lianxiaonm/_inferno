@@ -16,8 +16,8 @@ import { appConfig, remoteApi } from '../../configs/config'
 
 
 // api base url
-let apiBaseUrl = remoteApi.apiBaseUrl || remoteApi.psptApiRoot || '',
-    mtpApiRoot = remoteApi.mtpApiRoot,
+let apiBaseUrl = remoteApi.apiBaseUrl || '',
+    mtpApiRoot = remoteApi.mtpApiRoot, //-- 因为
     deviceInfo, queueList = [], hasReady = 0;
 
 function getRequestUrl(url) {
@@ -91,6 +91,7 @@ function BaseHttpRequest() {
             cache = cache && !!localStorage;
             var defer = $q.defer(), self = this, cacheResp,
                 urlHash = cache && hash(location.href + '@@@' + url);
+            //接口的数据缓存功能
             cache && (cacheResp = localStorage.getItem(urlHash)) && (function () {
                 var pending = defer.promise.$$state && defer.promise.$$state.pending || [];
                 ((pending[0] || [])[1] || noop)(extend(fromJson(cacheResp), {fromCache: true}));

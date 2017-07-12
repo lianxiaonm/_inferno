@@ -33,7 +33,7 @@ export default function Keyboard(props) {
     others.length || className.push('keyAll');
     return (
         <div className={className.join(' ')} onTap={linkEvent(props, tapClick)}>
-            <h5>壹钱包安全键盘</h5>
+            <h5>安全键盘</h5>
             <ul className="col number m-row">
                 {
                     keys.map(item => <li className={getClazz(item, ['col-4'])}>{item}</li>)

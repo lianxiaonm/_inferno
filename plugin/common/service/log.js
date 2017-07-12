@@ -1,3 +1,7 @@
+/*
+ *code from angular 1.3x
+ */
+
 import { noop } from './common'
 
 let debug = true;

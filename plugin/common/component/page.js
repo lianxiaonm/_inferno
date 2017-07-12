@@ -1,12 +1,12 @@
 import Inferno from 'inferno';
 
 import Scroll from './scroll'
-import YqbHeader from './yqbHeader'
+import Header from './header'
 
 export default function Page(props) {
     return (
         <div className={props.className}>
-            <YqbHeader option={props.option}/>
+            <Header option={props.option}/>
             <Scroll pullDown={props.pullDown}
                     pullUp={props.pullUp}>
                 {props.children}
@@ -18,7 +18,7 @@ export default function Page(props) {
 export function staticPage(props) {
     return (
         <div className={props.className}>
-            <YqbHeader option={props.option}/>
+            <Header option={props.option}/>
             <Scroll pullDown={props.pullDown}
                     pullUp={props.pullUp}>
                 {props.children}

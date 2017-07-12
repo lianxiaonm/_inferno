@@ -1,3 +1,6 @@
+/*
+ * code from angular1.3x
+ */
 import { isUndefined, throwError } from 'inferno-shared'
 import { extend } from './common';
 

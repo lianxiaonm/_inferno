@@ -3,8 +3,6 @@ import Component from 'inferno-component';
 
 import { forEach, toJson, equals, extend, valueFn, browser } from '../service/common'
 
-import injectNative from '../util/injectNative'
-
 let defaultOption = {
     title: {
         type: "TitleNormal", value: document.title,
@@ -50,11 +48,9 @@ function closeWebView() {
     location.href = 'ewap://1qianbao/merchant/action_finish';
 }
 
-let callString = yqbNative.callString,
-    appVer = yqbNative.getAppVersion(),
-    support = yqbNative.compareVer('4.0.0');
+let appVer = false, support = false;
 
-export default class YqbHeader extends Component {
+export default class Header extends Component {
     constructor(props) {
         super(props);
         this.tapClick = this.tapClick.bind(this);
@@ -83,33 +79,6 @@ export default class YqbHeader extends Component {
             tabState = option.title.type == "TitleWithTab" ? 'close' : null,
             useH5Header = option.mandatoryUseH5Header || !support,
             self = this;
-        useH5Header || ((left, title, right) => {
-            clearTimeout(self.injectDelay);
-            forEach(right, function (btn, index) {
-                btn.onClickCallBackEval = callString('getNavigationConfig', 'right:' + index, true);
-            });
-            if (title.type == 'TitleWithTab') {
-                title.onOpenCallBackEval = callString('getNavigationConfig', 'open', true);
-                title.onCloseCallBackEval = callString('getNavigationConfig', 'close', true);
-            }
-            left.goBackCallBackEval = callString('getNavigationConfig', 'left', true);
-            left.isEscapeContainerShow = left.close ? 'show' : 'hide';
-            self.injectDelay = setTimeout(() => {
-                injectNative('getNavigationConfig', toJson(option), undefined, true)
-                    .then(val => {
-                        var trigger = val === 'open' ? title.onOpenHandler :
-                            val === 'close' ? title.onCloseHandler :
-                                /right:/.test(val) ? right[val.replace(/right:/, '')].onClickHandler :
-                                    val === 'left' ? self.goBackHandler
-                                        : self.setState({useH5Header: false});
-                        typeof trigger === 'function' && trigger();
-                    }, () => {
-                        self.setState({
-                            useH5Header: !option.hideH5Header
-                        })
-                    });
-            }, 200);
-        })(option.left, option.title, option.right);
         self.setState({option: option, tabState: tabState, useH5Header: useH5Header})
     }
 
@@ -126,7 +95,7 @@ export default class YqbHeader extends Component {
             right = option.right,
             tabState = state.tabState || '';
         return useH5Header ? (
-            <header className="yqb-header">
+            <header className="vx-header">
                 <div class="head-left">
                     {left.show ? <i onTap={this.goBackHandler} className="icon-font">&#xe679;</i> : ''}
                     {left.close ? <i onTap={closeWebView} className="icon-font">&#xe646;</i> : ''}

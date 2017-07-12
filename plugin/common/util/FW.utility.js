@@ -25,8 +25,7 @@ export default {
     httpRespDataConverter(data, status) {
         var code = data.code || data.resultCode || '',
             message = data.message || data.resultMsg || '';
-        if (status == 200) {
-            //"1000"表示业务逻辑成功！,"1022"-业务走不下去的错误, "2022"-表示系统未知错误
+        if (status == 200) {    //此处根据接入后台的返回码来定，，此处调用了
             delete data.resultCode;
             delete data.resultMsg;
         } else {

@@ -1,5 +1,6 @@
 /**
- * Created by h5 on 2017/5/24.
+ * Created by nimin on 2017/5/24.
+ * 分享功能依赖容器的功能，并没有做完整的分享功能
  */
 import Inferno from 'inferno'
 import Component from 'inferno-component'
@@ -20,7 +21,8 @@ export default class ShareBox extends Component {
     }
 
     initState(props) {
-        let baseUrl = 'ewap://1qianbao/share',
+        //需要依赖容器提供的api
+        let baseUrl = 'ewap://*****/share',
             options = extend({
                 wx_url: "微信分享跳转URL",
                 wx_title: "微信分享标题",
@@ -108,7 +110,7 @@ export default class ShareBox extends Component {
         return (
             <div className={className.join(' ')}>
                 <div className="share-banner"/>
-                <p className="share-text">{state.text || '壹钱包，为每一分钱创造价值'}</p>
+                <p className="share-text">{state.text || '默认的标题，需要对应项目配置'}</p>
                 <ul className="m-row share-icon">
                     {
                         state.shareList.map(item => {

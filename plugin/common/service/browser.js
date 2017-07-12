@@ -1,3 +1,7 @@
+/*
+ *code from angular 1.3x
+ */
+
 import { isUndefined, isString } from 'inferno-shared'
 import { sliceArgs, noop, doc, enc_URI, safeDECURI } from './common';
 import $log from './log';

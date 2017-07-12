@@ -1,3 +1,7 @@
+/*
+ * code from angular 1.3x
+ */
+
 import { isFunction, throwError, isObject, isArray } from 'inferno-shared'
 
 import { isPromiseLike, forEach } from './common'

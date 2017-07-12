@@ -27,7 +27,7 @@ export default class dialogPage extends Component {
                 {text: 'actionSheet2', click: $sheet.bind(null, ['回复', '转发', '打印'], $log.debug)},
                 {
                     text: 'shareBox', click: modelShareBox.bind(null, {
-                    text: '壹钱包，测试的title'
+                    text: '测试的title'
                 })
                 },
                 {

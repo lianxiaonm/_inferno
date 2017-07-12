@@ -1,3 +1,6 @@
+/*
+ * code from angular 1.3x
+ */
 import {
     lowercase, callbacks, isPromiseLike,
     urlResolve, createSimpleEl,
