@@ -25,10 +25,7 @@ export class Popup extends baseComponent {
                     <div className="popup-head">
                         <h3 className="popup-title">{props.title}</h3>
                         {
-                            props.subTitle &&
-                            <h5 className="popup-sub-title">
-                                {props.subTitle}
-                            </h5>
+                            props.subTitle && <h5 className="popup-sub-title">{props.subTitle}</h5>
                         }
                     </div>
                 }
@@ -125,7 +122,6 @@ export class Loading extends baseComponent {
 
     render() {
         browser && this.init(this.props);
-        return <div className={(this._className || []).join(' ')}
-                    dangerouslySetInnerHTML={{__html: this._html}}/>
+        return <div className={(this._className || []).join(' ')} dangerouslySetInnerHTML={{__html: this._html}}/>
     }
 }

@@ -56,12 +56,12 @@ export default class Input extends Component {
             validate = nextProps.validate || skipValidate,
             value = nextProps.value || '',
             error = value ? validate(value) || {} : {};
-        (isPromiseLike(error) ? error
-            : $q.when(error)).then(function (res) {
-            self.setState({
-                value: value || '', isOn: !!value, error: res.message
-            })
-        });
+        (isPromiseLike(error) ? error : $q.when(error))
+            .then(function (res) {
+                self.setState({
+                    value: value || '', isOn: !!value, error: res.message
+                })
+            });
     }
 
     render() {
