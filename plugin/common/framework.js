@@ -1,14 +1,16 @@
+//import {Provider} from 'inferno-redux'
+import createHistory from 'history/createBrowserHistory'
+
 import './service/log'
-//raf popup loading actionSheet
 import './service/ionic-lite'
-//datePicker linkagePicker
 import './service/popPicker'
-//injectNative yqbHeader iScroll
 import './component/page'
-//
 import './component/input'
-//http finger
 import './util/httpRequest'
-
 import './constants/static'
+import './less/layout.less'
 
+const history = createHistory();
+export  {
+    history
+}

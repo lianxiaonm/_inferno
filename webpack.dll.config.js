@@ -1,11 +1,11 @@
 const path    = require('path');
 const webpack = require('webpack');
 
-const infernoPath = path.resolve(__dirname, 'plugin/inferno/index.js');
+const infernoPath       = path.resolve(__dirname, 'plugin/inferno/index.js');
 const infernoSharedPath = path.resolve(__dirname, 'plugin/inferno-shared/index.js');
 
 module.exports = {
-    entry: {
+    entry  : {
         vendor: [
             'inferno',
             'inferno-component',
@@ -24,23 +24,23 @@ module.exports = {
             './plugin/picker.js'
         ]
     },
-    output: {
-        path: path.join(__dirname, 'dll'),
+    output : {
+        path    : path.join(__dirname, 'dll'),
         filename: '[name].dll.js',
-        library: '[name]_library'
+        library : '[name]_library'
     },
     resolve: {
         alias: {
-            'inferno': infernoPath,
+            'inferno'       : infernoPath,
             'inferno-shared': infernoSharedPath,
-            extensions: ['', '.js', '.jsx']
+            extensions      : ['', '.js', '.jsx']
         }
     },
-    module: {
+    module : {
         loaders: [ //2.0 loaders -> rules
             {
-                test: /\.(js|jsx)$/,
-                loader: 'babel',
+                test   : /\.(js|jsx)$/,
+                loader : 'babel',
                 exclude: /node_modules/,
                 include: __dirname
             }

@@ -5,6 +5,8 @@
 
 ### 组件介绍
 
+该组件包含常规开发需要的一些建议组件，都在plugin/common的文件夹中，运行项目既可以看到组件的文档页面。
+
 ### webpack建构
 
 本项目利用[webpack](http://webpack.github.io/)作为基础的建构打包工具

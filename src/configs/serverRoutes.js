@@ -5,73 +5,74 @@ import { createRoutes } from 'inferno-router'
 
 const rootRoute = [
     {
-        path: '/',//路径定义
+        path     : '/',//路径定义
         component: require('../pages/indexPage').default
     },
     {
-        path: '/check',//路径定义
+        path     : '/check',//路径定义
         component: require('../pages/checkPage').default
     },
     {
-        path: '/collapse',//路径定义
+        path     : '/collapse',//路径定义
         component: require('../pages/collapsePage').default
     },
     {
-        path: '/dialog',//路径定义
+        path     : '/dialog',//路径定义
         component: require('../pages/dialogPage').default
     },
     {
-        path: '/form',//路径定义
+        path     : '/form',//路径定义
         component: require('../pages/formPage').default
     },
     {
-        path: '/icon',//路径定义
+        path     : '/icon',//路径定义
         component: require('../pages/icontPage').default
     },
     {
-        path: '/loading',//路径定义
+        path     : '/loading',//路径定义
         component: require('../pages/loadingPage').default
     },
     {
-        path: '/native',//路径定义
+        path     : '/native',//路径定义
         component: require('../pages/nativePage').default
     },
     {
-        path: '/payPwd',//路径定义
+        path     : '/payPwd',//路径定义
         component: require('../pages/payPwdPage').default
     },
     {
-        path: '/picker',//路径定义
+        path     : '/picker',//路径定义
         component: require('../pages/pickerPage').default
     },
     {
-        path: '/progress',//路径定义
+        path     : '/progress',//路径定义
         component: require('../pages/progressPage').default
     },
     {
-        path: '/scrollDemo',//路径定义
+        path     : '/scrollDemo',//路径定义
         component: require('../pages/scrollDemoPage').default
     },
     {
-        path: '/scroll',//路径定义
+        path     : '/scroll',//路径定义
         component: require('../pages/scrollPage').default
     },
     {
-        path: '/search',//路径定义
+        path     : '/search',//路径定义
         component: require('../pages/searchPage').default
     },
     {
-        path: '/tab',//路径定义
+        path     : '/tab',//路径定义
         component: require('../pages/tabPage').default
     },
     {
-        path: '/rate',//路径定义
+        path     : '/rate',//路径定义
         component: require('../pages/ratePage').default
     }
 ];
 export default createRoutes(rootRoute.map(item => {
-    item.onEnter = function () {}
-    item.onLeave = function () {}
+    item.onEnter     = function () {}
+    item.onLeave     = function () {}
+    item.path        = process.env.PATH + item.path;
     item.childRoutes = []
     return item;
 }));
