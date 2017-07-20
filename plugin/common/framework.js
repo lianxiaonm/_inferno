@@ -3,7 +3,7 @@ import './service/log'
 import './service/ionic-lite'
 //datePicker linkagePicker
 import './service/popPicker'
-//injectNative yqbHeader iScroll
+//injectNative header iScroll
 import './component/page'
 //
 import './component/input'
