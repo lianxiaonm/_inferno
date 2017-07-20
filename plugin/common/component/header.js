@@ -45,7 +45,6 @@ function updateOption(option) {
     return option;
 }
 function closeWebView() {
-    location.href = 'ewap://1qianbao/merchant/action_finish';
 }
 
 let appVer = false, support = false;

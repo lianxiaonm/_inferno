@@ -9,5 +9,5 @@ export const regExp = {
     enCode: /^[a-zA-Z\s]+$/
 }
 export const native = {
-    close: 'ewap://1qianbao/merchant/action_finish'
+    close: ''
 }

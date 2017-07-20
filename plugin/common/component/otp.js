@@ -37,7 +37,6 @@ export default class Otp extends Component {
                     validate: self.validate.bind(self, 'picCode')
                 }
             ]
-            //picSrc: 'https://cashier.1qianbao.com/gtproxy/captchacode/code/9/3f5d1468-06f9-46c4-bf03-c1d7ef5038bd'   //图片验证码地址
         };
         self.vStore = {phone: props.phone}; //数据仓库
         self.count = 60, self.send = 0;
