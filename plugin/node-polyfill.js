@@ -1,21 +1,30 @@
-var window = {
-    navigator: {},
-    location: {}
+var location           = {},
+    navigator          = {},
+    window             = {},
+    document           = {},
+    yqbNative          = {};
+window.navigator       = navigator;
+window.location        = location;
+window.document        = document;
+window.yqbNative       = yqbNative;
+//
+navigator.userAgent    = '';
+//
+document.createElement = () => {
+    return {
+        setAttribute(){},
+        pathname: ''
+    }
 }
-var document = {
-    createElement(){
-        return {
-            setAttribute(){},
-            pathname: ''
-        }
-    },
-    appendChild(){}
-};
-var yqbNative = {
-    getAppVersion(){return '0.0.0'},
-    compareVer(){return false;}
-};
-document.body = document;
-global.window = window;
-global.document = document;
+document.appendChild   = () => {};
+document.body          = document;
+
+yqbNative.getAppVersion = () => '0.0.0'
+yqbNative.compareVer    = () => false;
+
+//
+global.window    = window;
+global.location  = location;
+global.navigator = navigator;
+global.document  = document;
 global.yqbNative = yqbNative;

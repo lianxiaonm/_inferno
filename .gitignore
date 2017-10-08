@@ -8,4 +8,5 @@ logs/
 node_path/
 index.html
 build_path/
+.log
 

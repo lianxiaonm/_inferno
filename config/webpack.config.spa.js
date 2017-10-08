@@ -59,7 +59,6 @@ function getConfig(opts) {
             loaders: [ //2.0 loaders -> rules
                 {
                     test  : /\.(css|less)$/,
-                    //loader: lessExtractor.extract(['css', 'less'])
                     loader: ExtractTextPlugin.extract("style", "css!less", {
                         publicPath: '../'
                     })

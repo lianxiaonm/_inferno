@@ -1,5 +1,5 @@
 //import {Provider} from 'inferno-redux'
-import createHistory from 'history/createBrowserHistory'
+//import createHistory from 'history/createBrowserHistory'
 
 import './service/log'
 import './service/ionic-lite'
@@ -10,7 +10,7 @@ import './util/httpRequest'
 import './constants/static'
 import './less/layout.less'
 
-const history = createHistory();
-export  {
-    history
-}
+//const history = createHistory();
+//export  {
+//    history
+//}

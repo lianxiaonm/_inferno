@@ -13,15 +13,18 @@ const deployPath = path.resolve(__dirname, 'deployed');
 
 module.exports = {
     entry  : {
-        vendor: [
+        vendor  : [
             './plugin/common/framework.js'
         ],
-        app   : ['./src/index.js'],
-        plugin: [
+        app     : ['./src/index.js'],
+        plugin  : [
             './plugin/ionic-svg.js',
             './plugin/mui-gesture.js',
             './plugin/mui-scroll.js',
             './plugin/picker.js'
+        ],
+        adaptive: [
+            './plugin/adaptive.js'
         ]
     },
     output : {
